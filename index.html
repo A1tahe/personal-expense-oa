@@ -7,27 +7,23 @@
 <title>个人消费 OA</title>
 
 <style>
-
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
     margin: 0;
-    background: #f5f5f7;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f5f6f8;
     color: #222;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        "Microsoft YaHei",
-        sans-serif;
 }
 
 button,
 input,
-textarea,
-select {
+select,
+textarea {
     font: inherit;
 }
 
@@ -36,78 +32,260 @@ button {
 }
 
 .app {
-    max-width: 600px;
-    margin: auto;
+    max-width: 700px;
+    margin: 0 auto;
     min-height: 100vh;
-    padding-bottom: 80px;
+    background: #f5f6f8;
 }
 
+/* =========================
+   Header
+========================= */
+
 .header {
-    background: white;
-    padding: 18px 18px 14px;
+    background: #fff;
+    padding: 18px 20px 14px;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 20;
     border-bottom: 1px solid #eee;
 }
 
 .header-title {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
 }
 
 .header-subtitle {
-    color: #888;
-    font-size: 13px;
     margin-top: 4px;
+    font-size: 13px;
+    color: #888;
+}
+
+/* =========================
+   Navigation
+========================= */
+
+.nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: #fff;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    bottom: 0;
+    z-index: 30;
+}
+
+.nav button {
+    border: 0;
+    background: #fff;
+    padding: 10px 4px 9px;
+    color: #888;
+    font-size: 12px;
+}
+
+.nav button.active {
+    color: #111;
+    font-weight: 700;
+}
+
+.nav-icon {
+    font-size: 20px;
+    line-height: 22px;
+    margin-bottom: 2px;
+}
+
+/* =========================
+   Main
+========================= */
+
+.main {
+    padding: 18px 16px 90px;
 }
 
 .page {
-    padding: 15px;
+    display: none;
 }
+
+.page.active {
+    display: block;
+}
+
+/* =========================
+   Card
+========================= */
 
 .card {
-    background: white;
+    background: #fff;
     border-radius: 16px;
-    padding: 18px;
+    padding: 16px;
     margin-bottom: 14px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 2px 10px rgba(0,0,0,.035);
 }
 
-.stat-grid {
+.card-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.card-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* =========================
+   Dashboard
+========================= */
+
+.welcome {
+    margin-bottom: 18px;
+}
+
+.welcome-title {
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.welcome-subtitle {
+    color: #888;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.stats-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+    margin-bottom: 14px;
 }
 
-.stat-card {
-    background: white;
-    border-radius: 14px;
-    padding: 16px;
+.stat {
+    background: #fff;
+    border-radius: 15px;
+    padding: 15px;
 }
 
-.stat-title {
+.stat-label {
     color: #888;
     font-size: 13px;
 }
 
 .stat-value {
-    font-size: 24px;
-    font-weight: 700;
-    margin-top: 6px;
+    font-size: 23px;
+    font-weight: 800;
+    margin-top: 5px;
 }
 
-.section-title {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 12px;
+/* =========================
+   Budget
+========================= */
+
+.budget-box {
+    margin-bottom: 14px;
 }
 
-label {
-    display: block;
+.budget-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 7px;
+}
+
+.budget-label {
     font-size: 14px;
     font-weight: 600;
-    margin-bottom: 6px;
+}
+
+.budget-value {
+    font-size: 13px;
+    color: #777;
+}
+
+.progress {
+    height: 8px;
+    background: #eceef1;
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #111;
+    border-radius: 99px;
+    transition: width .25s;
+}
+
+.progress-bar.warning {
+    background: #e7a600;
+}
+
+.progress-bar.danger {
+    background: #e5484d;
+}
+
+/* =========================
+   Buttons
+========================= */
+
+.btn {
+    border: 0;
+    border-radius: 11px;
+    padding: 11px 15px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: #111;
+    color: #fff;
+}
+
+.btn-secondary {
+    background: #f0f1f3;
+    color: #222;
+}
+
+.btn-danger {
+    background: #fff0f0;
+    color: #d93025;
+}
+
+.btn-refund {
+    background: #fff4e5;
+    color: #a45b00;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn + .btn {
+    margin-left: 7px;
+}
+
+/* =========================
+   Form
+========================= */
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 650;
+    margin-bottom: 7px;
+}
+
+.form-help {
+    color: #999;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
 input,
@@ -115,62 +293,104 @@ select,
 textarea {
     width: 100%;
     border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 12px;
-    background: white;
+    background: #fff;
+    border-radius: 11px;
+    padding: 11px 12px;
     outline: none;
-    margin-bottom: 15px;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-    border-color: #888;
+    border-color: #999;
 }
 
 textarea {
-    min-height: 100px;
+    min-height: 90px;
     resize: vertical;
 }
 
-.btn {
-    border: none;
-    border-radius: 11px;
-    padding: 12px 16px;
-    background: #222;
-    color: white;
-    width: 100%;
-    font-weight: 600;
+/* =========================
+   Choice
+========================= */
+
+.choice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 9px;
 }
 
-.btn-secondary {
-    background: #eee;
-    color: #222;
+.choice {
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 12px;
+    background: #fff;
+    text-align: left;
 }
 
-.btn-danger {
-    background: #e5484d;
+.choice.selected {
+    border-color: #111;
+    background: #f3f3f3;
 }
 
-.btn-success {
-    background: #2f9e44;
+.choice-title {
+    font-weight: 650;
+    font-size: 14px;
 }
 
-.btn-warning {
-    background: #f08c00;
+.choice-desc {
+    margin-top: 3px;
+    color: #888;
+    font-size: 12px;
 }
 
-.btn-small {
-    width: auto;
-    padding: 8px 12px;
-    font-size: 13px;
+/* =========================
+   Status
+========================= */
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 99px;
+    padding: 4px 9px;
+    font-size: 11px;
+    font-weight: 650;
 }
 
-.expense-item {
-    background: white;
-    border-radius: 14px;
-    padding: 16px;
-    margin-bottom: 10px;
+.status-pending {
+    background: #fff6db;
+    color: #9a6a00;
+}
+
+.status-approved {
+    background: #e9f4ff;
+    color: #1671c5;
+}
+
+.status-purchased {
+    background: #eaf8ee;
+    color: #16823c;
+}
+
+.status-refunded {
+    background: #f1edf9;
+    color: #7253a6;
+}
+
+.status-rejected {
+    background: #fff0f0;
+    color: #d93025;
+}
+
+/* =========================
+   Expense Card
+========================= */
+
+.expense-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 11px;
 }
 
 .expense-top {
@@ -180,265 +400,361 @@ textarea {
 }
 
 .expense-name {
+    font-size: 16px;
     font-weight: 700;
-    font-size: 17px;
 }
 
 .expense-price {
-    font-weight: 700;
+    font-size: 17px;
+    font-weight: 800;
     white-space: nowrap;
 }
 
 .expense-meta {
-    color: #888;
-    font-size: 13px;
-    margin-top: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 9px;
 }
 
-.badge {
-    display: inline-block;
-    padding: 5px 9px;
-    border-radius: 20px;
+.meta-tag {
+    font-size: 11px;
+    color: #777;
+    background: #f3f4f5;
+    border-radius: 7px;
+    padding: 4px 7px;
+}
+
+.expense-time {
+    color: #999;
     font-size: 12px;
     margin-top: 10px;
-    background: #eee;
 }
 
-.badge-pending {
-    background: #fff3bf;
-    color: #8a6500;
-}
-
-.badge-approved {
-    background: #d3f9d8;
-    color: #176b2c;
-}
-
-.badge-rejected {
-    background: #ffe3e3;
-    color: #a61e1e;
-}
-
-.badge-purchased {
-    background: #dbe4ff;
-    color: #364fc7;
-}
-
-.progress {
-    height: 8px;
-    background: #eee;
-    border-radius: 20px;
-    overflow: hidden;
-    margin: 12px 0;
-}
-
-.progress-bar {
-    height: 100%;
-    background: #333;
-}
-
-.step {
-    border: 1px solid #eee;
-    border-radius: 13px;
-    padding: 15px;
-    margin-bottom: 10px;
-}
-
-.step-current {
-    border: 2px solid #333;
-}
-
-.step-done {
-    background: #f8f8f8;
-}
-
-.step-number {
+.expense-note {
+    color: #666;
     font-size: 13px;
-    color: #888;
+    margin-top: 9px;
+    line-height: 1.5;
 }
 
-.step-title {
-    font-weight: 700;
-    margin-top: 4px;
-}
-
-.option {
-    display: block;
-    background: #f5f5f5;
-    border-radius: 10px;
-    padding: 12px;
-    margin: 8px 0;
-    cursor: pointer;
-}
-
-.option input {
-    width: auto;
-    margin: 0 8px 0 0;
-}
-
-.budget-row {
-    margin-bottom: 20px;
-}
-
-.budget-name {
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-.budget-info {
-    font-size: 13px;
-    color: #777;
-    line-height: 1.7;
-}
-
-.budget-bar {
-    height: 8px;
-    background: #eee;
-    border-radius: 20px;
-    overflow: hidden;
-    margin: 8px 0;
-}
-
-.budget-fill {
-    height: 100%;
-    background: #333;
-}
-
-.budget-warning {
-    color: #d9480f;
-    font-weight: 700;
-}
-
-.budget-danger {
-    color: #c92a2a;
-    font-weight: 700;
-}
+/* =========================
+   Empty
+========================= */
 
 .empty {
     text-align: center;
+    padding: 45px 20px;
     color: #999;
-    padding: 30px 10px;
 }
 
-.bottom-nav {
-    position: fixed;
+.empty-icon {
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.empty-text {
+    font-size: 14px;
+}
+
+/* =========================
+   Detail
+========================= */
+
+.detail-title {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.detail-price {
+    font-size: 30px;
+    font-weight: 850;
+    margin-top: 8px;
+}
+
+.detail-section {
+    margin-top: 18px;
+}
+
+.detail-section-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 9px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 9px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-row:last-child {
+    border-bottom: 0;
+}
+
+.detail-key {
+    color: #888;
+    font-size: 13px;
+}
+
+.detail-value {
+    font-size: 13px;
+    text-align: right;
+}
+
+/* =========================
+   Approval
+========================= */
+
+.approval-step {
+    display: flex;
+    gap: 12px;
+    position: relative;
+    padding-bottom: 18px;
+}
+
+.approval-step:last-child {
+    padding-bottom: 0;
+}
+
+.approval-line {
+    position: absolute;
+    left: 11px;
+    top: 25px;
     bottom: 0;
-    left: 0;
-    right: 0;
-    background: white;
-    border-top: 1px solid #eee;
+    width: 1px;
+    background: #ddd;
+}
+
+.approval-step:last-child .approval-line {
+    display: none;
+}
+
+.approval-dot {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background: #eee;
+    color: #999;
     display: flex;
     justify-content: center;
-    z-index: 20;
-}
-
-.bottom-nav-inner {
-    width: 100%;
-    max-width: 600px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-.nav-btn {
-    border: none;
-    background: white;
-    padding: 12px 5px;
-    color: #777;
+    align-items: center;
     font-size: 12px;
+    flex-shrink: 0;
+    z-index: 1;
 }
 
-.nav-btn.active {
-    color: #111;
-    font-weight: 700;
+.approval-step.active .approval-dot {
+    background: #111;
+    color: #fff;
 }
 
-.back-btn {
-    margin-bottom: 12px;
+.approval-step.done .approval-dot {
+    background: #16823c;
+    color: #fff;
 }
 
-.row {
-    display: flex;
-    gap: 8px;
-}
-
-.row > * {
+.approval-content {
     flex: 1;
 }
 
-.money {
-    font-size: 30px;
-    font-weight: 800;
+.approval-title {
+    font-size: 14px;
+    font-weight: 650;
 }
 
-.reason {
-    white-space: pre-wrap;
-    line-height: 1.6;
-    color: #555;
-}
-
-.notice {
-    background: #f5f5f5;
-    padding: 12px;
-    border-radius: 10px;
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-hr {
-    border: none;
-    border-top: 1px solid #eee;
-    margin: 16px 0;
-}
-
-.hidden {
-    display: none !important;
-}
-
-.small {
+.approval-desc {
     font-size: 12px;
+    color: #999;
+    margin-top: 3px;
+}
+
+/* =========================
+   Category Budget
+========================= */
+
+.category-budget {
+    margin-bottom: 14px;
+}
+
+.category-budget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.category-budget-name {
+    font-weight: 650;
+    font-size: 14px;
+}
+
+.category-budget-value {
     color: #888;
-}
-
-.big-number {
-    font-size: 32px;
-    font-weight: 800;
-}
-
-.total-budget-card {
-    position: relative;
-}
-
-.budget-percent {
     font-size: 12px;
-    color: #888;
-    text-align: right;
+}
+
+.category-budget-sub {
+    color: #999;
+    font-size: 11px;
     margin-top: 4px;
 }
 
-.remaining-positive {
-    color: #176b2c;
-    font-weight: 700;
+/* =========================
+   Settings
+========================= */
+
+.setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
 }
 
-.remaining-warning {
-    color: #d9480f;
-    font-weight: 700;
+.setting-row:last-child {
+    border-bottom: 0;
 }
 
-.remaining-negative {
-    color: #c92a2a;
-    font-weight: 700;
+.setting-label {
+    font-size: 14px;
+    font-weight: 600;
 }
 
-@media (min-width: 601px) {
+.setting-desc {
+    font-size: 12px;
+    color: #999;
+    margin-top: 3px;
+}
 
-    .app {
-        box-shadow: 0 0 30px rgba(0,0,0,0.05);
-        background: #f5f5f7;
+.setting-input {
+    width: 120px;
+    text-align: right;
+}
+
+.category-setting {
+    padding: 13px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.category-setting:last-child {
+    border-bottom: 0;
+}
+
+.category-setting-title {
+    font-weight: 650;
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+
+.category-setting-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.category-setting-grid label {
+    font-size: 11px;
+    color: #999;
+}
+
+.category-setting-grid input {
+    margin-top: 4px;
+}
+
+/* =========================
+   Toast
+========================= */
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 85px;
+    transform: translateX(-50%) translateY(15px);
+    background: rgba(20,20,20,.92);
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .25s;
+    z-index: 100;
+    max-width: 85%;
+    text-align: center;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* =========================
+   Modal
+========================= */
+
+.modal-mask {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.4);
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 80;
+}
+
+.modal-mask.show {
+    display: flex;
+}
+
+.modal {
+    width: 100%;
+    max-width: 700px;
+    background: #fff;
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: 750;
+    margin-bottom: 15px;
+}
+
+.modal-buttons {
+    display: flex;
+    margin-top: 18px;
+}
+
+.modal-buttons .btn {
+    flex: 1;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (min-width: 701px) {
+    .nav {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 680px;
+        border-radius: 16px;
+        box-shadow: 0 5px 25px rgba(0,0,0,.1);
+        border: 1px solid #eee;
     }
 
+    .main {
+        padding-bottom: 110px;
+    }
 }
-
 </style>
 </head>
 
@@ -446,97 +762,506 @@ hr {
 
 <div class="app">
 
-<div class="header">
+    <header class="header">
+        <div class="header-title">个人消费 OA</div>
+        <div class="header-subtitle">先审批，再消费</div>
+    </header>
 
-    <div class="header-title">
-        个人消费 OA
+    <main class="main">
+
+        <!-- =========================
+             首页
+        ========================== -->
+
+        <section id="page-home" class="page active">
+
+            <div class="welcome">
+                <div class="welcome-title">消费控制台</div>
+                <div class="welcome-subtitle">把真正值得买的东西留下来</div>
+            </div>
+
+            <div class="stats-grid">
+
+                <div class="stat">
+                    <div class="stat-label">审批中</div>
+                    <div class="stat-value" id="statPending">0</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">已通过</div>
+                    <div class="stat-value" id="statApproved">0</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">已购买</div>
+                    <div class="stat-value" id="statPurchased">0</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">申请总数</div>
+                    <div class="stat-value" id="statTotal">0</div>
+                </div>
+
+            </div>
+
+            <!-- 总预算 -->
+
+            <div class="card">
+
+                <div class="card-title">总预算</div>
+
+                <div class="budget-box">
+
+                    <div class="budget-row">
+                        <div class="budget-label">本月预算</div>
+                        <div class="budget-value" id="homeMonthlyBudgetText">
+                            ¥0 / ¥0
+                        </div>
+                    </div>
+
+                    <div class="progress">
+                        <div id="homeMonthlyProgress"
+                             class="progress-bar"></div>
+                    </div>
+
+                    <div class="budget-row" style="margin-top:12px;">
+                        <div class="budget-label">年度预算</div>
+                        <div class="budget-value" id="homeYearlyBudgetText">
+                            ¥0 / ¥0
+                        </div>
+                    </div>
+
+                    <div class="progress">
+                        <div id="homeYearlyProgress"
+                             class="progress-bar"></div>
+                    </div>
+
+                </div>
+
+                <div class="detail-row">
+                    <div class="detail-key">本月已消费</div>
+                    <div class="detail-value" id="homeMonthUsed">¥0</div>
+                </div>
+
+                <div class="detail-row">
+                    <div class="detail-key">本月剩余</div>
+                    <div class="detail-value" id="homeMonthRemaining">¥0</div>
+                </div>
+
+                <div class="detail-row">
+                    <div class="detail-key">年度已消费</div>
+                    <div class="detail-value" id="homeYearUsed">¥0</div>
+                </div>
+
+                <div class="detail-row">
+                    <div class="detail-key">年度剩余</div>
+                    <div class="detail-value" id="homeYearRemaining">¥0</div>
+                </div>
+
+            </div>
+
+            <!-- 分类预算 -->
+
+            <div class="card">
+
+                <div class="card-title-row">
+                    <div class="card-title" style="margin-bottom:0;">
+                        分类预算
+                    </div>
+                </div>
+
+                <div id="homeCategoryBudgets"></div>
+
+            </div>
+
+            <button class="btn btn-primary btn-block"
+                    onclick="showPage('new')">
+                ＋ 新建消费申请
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             待审批
+        ========================== -->
+
+        <section id="page-pending" class="page">
+
+            <div class="card-title">待处理</div>
+
+            <div id="pendingList"></div>
+
+        </section>
+
+
+        <!-- =========================
+             记录
+        ========================== -->
+
+        <section id="page-records" class="page">
+
+            <div class="card-title">全部记录</div>
+
+            <div id="recordsList"></div>
+
+        </section>
+
+
+        <!-- =========================
+             设置
+        ========================== -->
+
+        <section id="page-settings" class="page">
+
+            <div class="card-title">设置</div>
+
+            <!-- 总预算 -->
+
+            <div class="card">
+
+                <div class="card-title">总预算</div>
+
+                <div class="setting-row">
+
+                    <div>
+                        <div class="setting-label">每月总预算</div>
+                        <div class="setting-desc">
+                            所有分类合计
+                        </div>
+                    </div>
+
+                    <input
+                        id="settingMonthlyBudget"
+                        class="setting-input"
+                        type="number"
+                        min="0"
+                        step="100"
+                        onchange="saveTotalBudget()"
+                    >
+
+                </div>
+
+                <div class="setting-row">
+
+                    <div>
+                        <div class="setting-label">每年总预算</div>
+                        <div class="setting-desc">
+                            所有分类合计
+                        </div>
+                    </div>
+
+                    <input
+                        id="settingYearlyBudget"
+                        class="setting-input"
+                        type="number"
+                        min="0"
+                        step="100"
+                        onchange="saveTotalBudget()"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- 分类预算 -->
+
+            <div class="card">
+
+                <div class="card-title">分类预算</div>
+
+                <div id="categorySettings"></div>
+
+            </div>
+
+
+            <!-- 数据管理 -->
+
+            <div class="card">
+
+                <div class="card-title">数据管理</div>
+
+                <button class="btn btn-secondary btn-block"
+                        onclick="exportData()">
+                    导出数据
+                </button>
+
+                <div style="height:8px;"></div>
+
+                <button class="btn btn-secondary btn-block"
+                        onclick="document.getElementById('importFile').click()">
+                    导入数据
+                </button>
+
+                <input
+                    id="importFile"
+                    type="file"
+                    accept=".json,application/json"
+                    style="display:none"
+                    onchange="importData(event)"
+                >
+
+                <div style="height:8px;"></div>
+
+                <button class="btn btn-danger btn-block"
+                        onclick="clearAllData()">
+                    清空全部数据
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             新建申请
+        ========================== -->
+
+        <section id="page-new" class="page">
+
+            <div class="card">
+
+                <div class="card-title">新建消费申请</div>
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        想买什么？
+                    </label>
+
+                    <input
+                        id="newName"
+                        type="text"
+                        placeholder="例如：新鼠标"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        价格
+                    </label>
+
+                    <input
+                        id="newPrice"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        placeholder="0"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        分类
+                    </label>
+
+                    <select id="newCategory"></select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        备注
+                    </label>
+
+                    <textarea
+                        id="newNote"
+                        placeholder="为什么想买？可以写下购买理由。"
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        有用程度
+                    </label>
+
+                    <div id="usefulnessChoices"
+                         class="choice-grid"></div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        使用频率
+                    </label>
+
+                    <div id="frequencyChoices"
+                         class="choice-grid"></div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        已有替代品
+                    </label>
+
+                    <div id="alternativeChoices"
+                         class="choice-grid"></div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        价格合理性
+                    </label>
+
+                    <div id="priceChoices"
+                         class="choice-grid"></div>
+
+                </div>
+
+
+                <button
+                    class="btn btn-primary btn-block"
+                    onclick="submitApplication()">
+                    提交消费申请
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             详情
+        ========================== -->
+
+        <section id="page-detail" class="page">
+
+            <div id="detailContent"></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         Bottom Nav
+    ========================== -->
+
+    <nav class="nav">
+
+        <button
+            id="nav-home"
+            class="active"
+            onclick="showPage('home')">
+
+            <div class="nav-icon">⌂</div>
+            首页
+
+        </button>
+
+        <button
+            id="nav-pending"
+            onclick="showPage('pending')">
+
+            <div class="nav-icon">✓</div>
+            待处理
+
+        </button>
+
+        <button
+            id="nav-records"
+            onclick="showPage('records')">
+
+            <div class="nav-icon">☷</div>
+            记录
+
+        </button>
+
+        <button
+            id="nav-settings"
+            onclick="showPage('settings')">
+
+            <div class="nav-icon">⚙</div>
+            设置
+
+        </button>
+
+    </nav>
+
+</div>
+
+
+<!-- =========================
+     Modal
+========================= -->
+
+<div id="modalMask" class="modal-mask">
+
+    <div class="modal">
+
+        <div id="modalTitle" class="modal-title"></div>
+
+        <div id="modalContent"></div>
+
+        <div class="modal-buttons">
+
+            <button
+                class="btn btn-secondary"
+                onclick="closeModal()">
+                取消
+            </button>
+
+            <button
+                id="modalConfirm"
+                class="btn btn-primary"
+                onclick="confirmModal()">
+                确定
+            </button>
+
+        </div>
+
     </div>
 
-    <div class="header-subtitle">
-        我的消费，先审批再购买
-    </div>
-
-</div>
-
-<div id="app"></div>
-
 </div>
 
 
-<div class="bottom-nav">
-
-<div class="bottom-nav-inner">
-
-<button
-    class="nav-btn active"
-    onclick="showPage('home')">
-
-    🏠<br>首页
-
-</button>
-
-
-<button
-    class="nav-btn"
-    onclick="showPage('pending')">
-
-    ⏳<br>待审批
-
-</button>
-
-
-<button
-    class="nav-btn"
-    onclick="showPage('records')">
-
-    📋<br>记录
-
-</button>
-
-
-<button
-    class="nav-btn"
-    onclick="showPage('settings')">
-
-    ⚙️<br>设置
-
-</button>
-
-</div>
-
-</div>
+<div id="toast" class="toast"></div>
 
 
 <script>
 
-/* =====================================================
-   基础数据
-===================================================== */
+/* ============================================================
+   数据结构
+============================================================ */
 
-const STORAGE_KEY =
-    "personal_expense_oa_v1";
-
-
-/*
- * 总预算
- *
- * 可以直接在“设置”里修改。
- *
- * 默认：
- * 每月 5000
- * 每年 60000
- */
-
-const DEFAULT_TOTAL_BUDGET = {
-
-    monthly: 5000,
-
-    yearly: 60000
-
-};
+const STORAGE_KEY = "personal_expense_oa_v1";
 
 
-const DEFAULT_BUDGETS = {
+const CATEGORIES = [
+    "电子产品",
+    "娱乐",
+    "衣服",
+    "食品",
+    "宠物",
+    "交通",
+    "旅行",
+    "家居",
+    "学习",
+    "其他"
+];
+
+
+const DEFAULT_CATEGORY_BUDGETS = {
 
     "电子产品": {
         monthly: 3000,
@@ -591,128 +1316,138 @@ const DEFAULT_BUDGETS = {
 };
 
 
-const CATEGORIES =
-    Object.keys(DEFAULT_BUDGETS);
+/* 总预算 */
+
+const DEFAULT_TOTAL_BUDGET = {
+
+    monthly: 5000,
+
+    yearly: 60000
+
+};
 
 
-const STEPS = [
+/* ============================================================
+   选择项
+============================================================ */
 
-    {
+const CHOICES = {
 
-        title: "有用程度",
+    usefulness: [
+        {
+            value: "high",
+            title: "很有用",
+            desc: "明显解决问题"
+        },
+        {
+            value: "medium",
+            title: "有点用",
+            desc: "提升体验"
+        },
+        {
+            value: "low",
+            title: "可有可无",
+            desc: "没有也能用"
+        },
+        {
+            value: "none",
+            title: "没什么用",
+            desc: "主要是想要"
+        }
+    ],
 
-        question:
-            "这个东西对我有多大用？",
+    frequency: [
+        {
+            value: "daily",
+            title: "每天",
+            desc: "高频使用"
+        },
+        {
+            value: "weekly",
+            title: "每周",
+            desc: "经常使用"
+        },
+        {
+            value: "monthly",
+            title: "每月",
+            desc: "偶尔使用"
+        },
+        {
+            value: "rarely",
+            title: "很少",
+            desc: "低频使用"
+        }
+    ],
 
-        options: [
-            "很有用",
-            "有用",
-            "一般",
-            "没什么用"
-        ]
+    alternative: [
+        {
+            value: "none",
+            title: "没有",
+            desc: "目前没有替代品"
+        },
+        {
+            value: "poor",
+            title: "有但不好用",
+            desc: "现有方案明显不足"
+        },
+        {
+            value: "same",
+            title: "有类似的",
+            desc: "基本可以替代"
+        },
+        {
+            value: "good",
+            title: "已经够用了",
+            desc: "没必要再买"
+        }
+    ],
 
-    },
+    price: [
+        {
+            value: "very_good",
+            title: "非常合理",
+            desc: "明显值得"
+        },
+        {
+            value: "good",
+            title: "合理",
+            desc: "价格可以接受"
+        },
+        {
+            value: "high",
+            title: "偏贵",
+            desc: "需要考虑"
+        },
+        {
+            value: "very_high",
+            title: "很贵",
+            desc: "明显溢价"
+        }
+    ]
 
-    {
-
-        title: "使用频率",
-
-        question:
-            "预计会经常使用吗？",
-
-        options: [
-            "每天",
-            "每周",
-            "每月",
-            "偶尔",
-            "一次性"
-        ]
-
-    },
-
-    {
-
-        title: "已有替代品",
-
-        question:
-            "我现在是否已经有类似的东西？",
-
-        options: [
-            "没有",
-            "有，但不能满足需求",
-            "有，而且完全够用"
-        ]
-
-    },
-
-    {
-
-        title: "分类预算",
-
-        question:
-            "这次消费是否会造成预算压力？",
-
-        options: [
-            "预算充足",
-            "接近预算上限",
-            "超过预算"
-        ]
-
-    },
-
-    {
-
-        title: "价格合理性",
-
-        question:
-            "这个价格是否合理？",
-
-        options: [
-            "很便宜",
-            "正常价格",
-            "有点贵",
-            "很贵"
-        ]
-
-    },
-
-    {
-
-        title: "最终决定",
-
-        question:
-            "综合考虑以后，我是否真的应该购买？",
-
-        options: [
-            "通过",
-            "拒绝",
-            "暂缓"
-        ]
-
-    }
-
-];
+};
 
 
-/* =====================================================
-   数据读取
-===================================================== */
+/* ============================================================
+   Data
+============================================================ */
+
+let data = loadData();
+
 
 function loadData() {
 
-    const saved =
-        localStorage.getItem(STORAGE_KEY);
+    let raw = localStorage.getItem(STORAGE_KEY);
 
-
-    if (!saved) {
+    if (!raw) {
 
         return {
 
             expenses: [],
 
-            budgets:
+            categoryBudgets:
                 JSON.parse(
-                    JSON.stringify(DEFAULT_BUDGETS)
+                    JSON.stringify(DEFAULT_CATEGORY_BUDGETS)
                 ),
 
             totalBudget:
@@ -727,38 +1462,77 @@ function loadData() {
 
     try {
 
-        const data =
-            JSON.parse(saved);
+        let parsed = JSON.parse(raw);
 
 
-        return {
+        if (!parsed.expenses) {
+            parsed.expenses = [];
+        }
 
-            expenses:
-                data.expenses || [],
 
-            budgets:
-                data.budgets ||
+        if (!parsed.categoryBudgets) {
+
+            parsed.categoryBudgets =
                 JSON.parse(
-                    JSON.stringify(DEFAULT_BUDGETS)
-                ),
+                    JSON.stringify(DEFAULT_CATEGORY_BUDGETS)
+                );
 
-            totalBudget:
-                data.totalBudget ||
+        } else {
+
+            for (const category of CATEGORIES) {
+
+                if (!parsed.categoryBudgets[category]) {
+
+                    parsed.categoryBudgets[category] = {
+                        ...DEFAULT_CATEGORY_BUDGETS[category]
+                    };
+
+                }
+
+            }
+
+        }
+
+
+        if (!parsed.totalBudget) {
+
+            parsed.totalBudget =
                 JSON.parse(
                     JSON.stringify(DEFAULT_TOTAL_BUDGET)
-                )
+                );
 
-        };
+        } else {
+
+            if (
+                typeof parsed.totalBudget.monthly !== "number"
+            ) {
+                parsed.totalBudget.monthly =
+                    DEFAULT_TOTAL_BUDGET.monthly;
+            }
+
+            if (
+                typeof parsed.totalBudget.yearly !== "number"
+            ) {
+                parsed.totalBudget.yearly =
+                    DEFAULT_TOTAL_BUDGET.yearly;
+            }
+
+        }
+
+
+        return parsed;
 
     } catch (e) {
+
+        console.error(e);
 
         return {
 
             expenses: [],
 
-            budgets:
+            categoryBudgets:
                 JSON.parse(
-                    JSON.stringify(DEFAULT_BUDGETS)
+                    JSON.stringify(DEFAULT_CATEGORY_BUDGETS)
                 ),
 
             totalBudget:
@@ -773,146 +1547,91 @@ function loadData() {
 }
 
 
-let data =
-    loadData();
-
-
 function saveData() {
 
     localStorage.setItem(
-
         STORAGE_KEY,
-
         JSON.stringify(data)
-
     );
 
 }
 
 
-/* =====================================================
-   工具函数
-===================================================== */
+/* ============================================================
+   Date
+============================================================ */
 
-function money(value) {
+function localDateString(date = new Date()) {
 
-    return Number(
-        value || 0
-    ).toLocaleString(
-
-        "zh-CN",
-
-        {
-
-            minimumFractionDigits: 2,
-
-            maximumFractionDigits: 2
-
-        }
-
-    );
-
-}
-
-
-/*
- * 使用手机本地时间。
- *
- * 不使用 toISOString，
- * 避免 UTC 导致日期跨天问题。
- */
-
-function today() {
-
-    const d =
-        new Date();
-
-    const year =
-        d.getFullYear();
+    const year = date.getFullYear();
 
     const month =
-        String(
-            d.getMonth() + 1
-        ).padStart(2,"0");
+        String(date.getMonth() + 1).padStart(2, "0");
 
     const day =
-        String(
-            d.getDate()
-        ).padStart(2,"0");
+        String(date.getDate()).padStart(2, "0");
 
     return `${year}-${month}-${day}`;
 
 }
 
 
-function currentMonth() {
+function isSameMonth(dateString) {
 
-    const d =
-        new Date();
+    if (!dateString) return false;
 
-    const year =
-        d.getFullYear();
+    const d = new Date(dateString);
 
-    const month =
-        String(
-            d.getMonth() + 1
-        ).padStart(2,"0");
+    const now = new Date();
 
-    return `${year}-${month}`;
+    return (
+        d.getFullYear() === now.getFullYear() &&
+        d.getMonth() === now.getMonth()
+    );
 
 }
 
 
-function currentYear() {
+function isSameYear(dateString) {
 
-    return new Date()
-        .getFullYear()
-        .toString();
+    if (!dateString) return false;
+
+    const d = new Date(dateString);
+
+    const now = new Date();
+
+    return (
+        d.getFullYear() === now.getFullYear()
+    );
+
+}
+
+
+function formatDateTime(dateString) {
+
+    if (!dateString) return "-";
+
+    const d = new Date(dateString);
+
+    if (isNaN(d.getTime())) return dateString;
+
+    return d.toLocaleString(
+        "zh-CN",
+        {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit"
+        }
+    );
 
 }
 
 
-function escapeHtml(text) {
-
-    if (
-        text === undefined ||
-        text === null
-    ) {
-
-        return "";
-
-    }
-
-
-    return String(text)
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
-
+/* ============================================================
+   Status
+============================================================ */
 
 function statusText(status) {
 
@@ -922,12 +1641,13 @@ function statusText(status) {
 
         approved: "已通过",
 
-        rejected: "已拒绝",
+        purchased: "已购买",
 
-        purchased: "已购买"
+        refunded: "已退款",
+
+        rejected: "已拒绝"
 
     };
-
 
     return map[status] || status;
 
@@ -936,971 +1656,612 @@ function statusText(status) {
 
 function statusClass(status) {
 
-    return "badge badge-" + status;
+    const map = {
+
+        pending: "status-pending",
+
+        approved: "status-approved",
+
+        purchased: "status-purchased",
+
+        refunded: "status-refunded",
+
+        rejected: "status-rejected"
+
+    };
+
+    return map[status] || "status-pending";
 
 }
 
 
-/* =====================================================
-   分类预算计算
-===================================================== */
+/* ============================================================
+   Spending
+   重要：
+   只有 purchased 才占用额度。
+   refunded 不占用额度。
+============================================================ */
 
-function getCategorySpending(
-    category,
-    type
-) {
+function getCategorySpending(category) {
 
-    const nowMonth =
-        currentMonth();
+    let monthUsed = 0;
 
-    const nowYear =
-        currentYear();
+    let yearUsed = 0;
 
 
-    return data.expenses
+    data.expenses.forEach(expense => {
 
-        .filter(e =>
-
-            e.category === category &&
-
-            e.status === "purchased"
-
-        )
-
-        .filter(e => {
-
-            if (
-                type === "month"
-            ) {
-
-                return (
-                    monthKey(
-                        e.purchasedAt ||
-                        e.createdAt
-                    ) === nowMonth
-                );
-
-            }
+        if (
+            expense.status !== "purchased"
+        ) {
+            return;
+        }
 
 
-            return (
-                (
-                    e.purchasedAt ||
-                    e.createdAt
-                ).slice(0,4)
-                === nowYear
-            );
-
-        })
-
-        .reduce(
-
-            (sum,e) =>
-                sum + Number(e.price),
-
-            0
-
-        );
-
-}
+        if (
+            expense.category !== category
+        ) {
+            return;
+        }
 
 
-function getBudgetInfo(
-    category,
-    price = 0
-) {
-
-    const budget =
-        data.budgets[category] ||
-        {
-            monthly: 0,
-            yearly: 0
-        };
+        const price =
+            Number(expense.price) || 0;
 
 
-    const monthUsed =
-        getCategorySpending(
-            category,
-            "month"
-        );
+        if (isSameMonth(expense.purchasedAt || expense.createdAt)) {
+
+            monthUsed += price;
+
+        }
 
 
-    const yearUsed =
-        getCategorySpending(
-            category,
-            "year"
-        );
+        if (isSameYear(expense.purchasedAt || expense.createdAt)) {
 
+            yearUsed += price;
 
-    const monthRemaining =
-        budget.monthly -
-        monthUsed -
-        Number(price);
+        }
 
-
-    const yearRemaining =
-        budget.yearly -
-        yearUsed -
-        Number(price);
+    });
 
 
     return {
 
-        monthly:
-            budget.monthly,
-
-        yearly:
-            budget.yearly,
-
         monthUsed,
 
-        yearUsed,
-
-        monthRemaining,
-
-        yearRemaining
+        yearUsed
 
     };
 
 }
 
 
-function monthKey(dateString) {
+function getTotalBudgetInfo(extraPrice = 0) {
 
-    if (!dateString) {
+    let monthUsed = 0;
 
-        return "";
+    let yearUsed = 0;
+
+
+    data.expenses.forEach(expense => {
+
+        /*
+         * 这里故意只计算 purchased。
+         *
+         * pending / approved 不占用额度
+         * refunded 不占用额度
+         */
+
+        if (
+            expense.status !== "purchased"
+        ) {
+            return;
+        }
+
+
+        const price =
+            Number(expense.price) || 0;
+
+
+        if (
+            isSameMonth(
+                expense.purchasedAt ||
+                expense.createdAt
+            )
+        ) {
+
+            monthUsed += price;
+
+        }
+
+
+        if (
+            isSameYear(
+                expense.purchasedAt ||
+                expense.createdAt
+            )
+        ) {
+
+            yearUsed += price;
+
+        }
+
+    });
+
+
+    return {
+
+        monthUsed,
+
+        yearUsed,
+
+        monthlyBudget:
+            Number(data.totalBudget.monthly) || 0,
+
+        yearlyBudget:
+            Number(data.totalBudget.yearly) || 0,
+
+        monthRemaining:
+            (
+                Number(data.totalBudget.monthly) || 0
+            ) - monthUsed - extraPrice,
+
+        yearRemaining:
+            (
+                Number(data.totalBudget.yearly) || 0
+            ) - yearUsed - extraPrice
+
+    };
+
+}
+
+
+/* ============================================================
+   Progress
+============================================================ */
+
+function progressPercent(used, budget) {
+
+    if (!budget || budget <= 0) {
+
+        return used > 0 ? 100 : 0;
 
     }
 
-    return dateString.slice(
-        0,
-        7
+    return Math.min(
+        100,
+        Math.max(
+            0,
+            used / budget * 100
+        )
     );
 
 }
 
 
-/* =====================================================
-   总预算计算
-===================================================== */
+function applyProgressStyle(element, percent) {
 
-function getTotalBudgetInfo(
-    price = 0
-) {
+    element.style.width =
+        `${Math.min(100, percent)}%`;
 
-    const month =
-        currentMonth();
-
-    const year =
-        currentYear();
+    element.classList.remove(
+        "warning",
+        "danger"
+    );
 
 
-    /*
-     * 只有已经购买的东西
-     * 才算真正消费。
-     */
+    if (percent >= 100) {
 
-    const monthUsed =
-        data.expenses
+        element.classList.add("danger");
 
-            .filter(e =>
+    } else if (percent >= 80) {
 
-                (
-                    e.purchasedAt ||
-                    e.createdAt
-                ).slice(0,7)
-                === month &&
+        element.classList.add("warning");
 
-                e.status === "purchased"
-
-            )
-
-            .reduce(
-
-                (sum,e) =>
-                    sum + Number(e.price),
-
-                0
-
-            );
-
-
-    const yearUsed =
-        data.expenses
-
-            .filter(e =>
-
-                (
-                    e.purchasedAt ||
-                    e.createdAt
-                ).slice(0,4)
-                === year &&
-
-                e.status === "purchased"
-
-            )
-
-            .reduce(
-
-                (sum,e) =>
-                    sum + Number(e.price),
-
-                0
-
-            );
-
-
-    const monthlyBudget =
-        Number(
-            data.totalBudget?.monthly || 0
-        );
-
-
-    const yearlyBudget =
-        Number(
-            data.totalBudget?.yearly || 0
-        );
-
-
-    return {
-
-        monthly:
-            monthlyBudget,
-
-        yearly:
-            yearlyBudget,
-
-        monthUsed,
-
-        yearUsed,
-
-        monthRemaining:
-            monthlyBudget -
-            monthUsed -
-            Number(price),
-
-        yearRemaining:
-            yearlyBudget -
-            yearUsed -
-            Number(price)
-
-    };
+    }
 
 }
 
 
-/* =====================================================
-   预算状态
-===================================================== */
+/* ============================================================
+   Navigation
+============================================================ */
 
-function remainingClass(
-    remaining,
-    budget
-) {
+function showPage(page) {
 
-    if (
-        remaining < 0
-    ) {
+    document.querySelectorAll(".page")
+        .forEach(el => {
 
-        return "remaining-negative";
+            el.classList.remove("active");
+
+        });
+
+
+    const target =
+        document.getElementById(
+            `page-${page}`
+        );
+
+
+    if (target) {
+
+        target.classList.add("active");
 
     }
 
 
-    if (
-        budget > 0 &&
-        remaining <= budget * 0.2
-    ) {
+    document.querySelectorAll(".nav button")
+        .forEach(el => {
 
-        return "remaining-warning";
+            el.classList.remove("active");
+
+        });
+
+
+    const nav =
+        document.getElementById(
+            `nav-${page}`
+        );
+
+
+    if (nav) {
+
+        nav.classList.add("active");
 
     }
 
 
-    return "remaining-positive";
+    if (page === "home") {
+
+        renderHome();
+
+    }
+
+    if (page === "pending") {
+
+        renderPending();
+
+    }
+
+    if (page === "records") {
+
+        renderRecords();
+
+    }
+
+    if (page === "settings") {
+
+        renderSettings();
+
+    }
+
+    if (page === "new") {
+
+        initNewForm();
+
+    }
 
 }
 
 
-/* =====================================================
-   首页
-===================================================== */
+/* ============================================================
+   Home
+============================================================ */
 
 function renderHome() {
 
-    const totalBudget =
-        getTotalBudgetInfo();
+    const expenses = data.expenses;
 
 
     const pending =
-        data.expenses
-
-            .filter(
-                e =>
-                    e.status === "pending"
-            )
-
-            .length;
+        expenses.filter(
+            x => x.status === "pending"
+        ).length;
 
 
     const approved =
-        data.expenses
-
-            .filter(
-                e =>
-                    e.status === "approved"
-            )
-
-            .length;
+        expenses.filter(
+            x => x.status === "approved"
+        ).length;
 
 
     const purchased =
-        data.expenses
-
-            .filter(
-                e =>
-                    e.status === "purchased"
-            )
-
-            .length;
+        expenses.filter(
+            x => x.status === "purchased"
+        ).length;
 
 
-    const monthPercent =
-        totalBudget.monthly > 0
+    document.getElementById("statPending")
+        .textContent = pending;
 
-        ?
 
-        Math.min(
+    document.getElementById("statApproved")
+        .textContent = approved;
 
-            100,
 
-            Math.round(
+    document.getElementById("statPurchased")
+        .textContent = purchased;
 
-                totalBudget.monthUsed /
-                totalBudget.monthly *
-                100
 
-            )
+    document.getElementById("statTotal")
+        .textContent = expenses.length;
 
+
+    const budget =
+        getTotalBudgetInfo();
+
+
+    document.getElementById(
+        "homeMonthlyBudgetText"
+    ).textContent =
+        `¥${formatMoney(budget.monthUsed)} / ¥${formatMoney(budget.monthlyBudget)}`;
+
+
+    document.getElementById(
+        "homeYearlyBudgetText"
+    ).textContent =
+        `¥${formatMoney(budget.yearUsed)} / ¥${formatMoney(budget.yearlyBudget)}`;
+
+
+    document.getElementById(
+        "homeMonthUsed"
+    ).textContent =
+        `¥${formatMoney(budget.monthUsed)}`;
+
+
+    document.getElementById(
+        "homeMonthRemaining"
+    ).textContent =
+        `¥${formatMoney(budget.monthlyBudget - budget.monthUsed)}`;
+
+
+    document.getElementById(
+        "homeYearUsed"
+    ).textContent =
+        `¥${formatMoney(budget.yearUsed)}`;
+
+
+    document.getElementById(
+        "homeYearRemaining"
+    ).textContent =
+        `¥${formatMoney(budget.yearlyBudget - budget.yearUsed)}`;
+
+
+    applyProgressStyle(
+        document.getElementById(
+            "homeMonthlyProgress"
+        ),
+        progressPercent(
+            budget.monthUsed,
+            budget.monthlyBudget
         )
-
-        :
-
-        0;
+    );
 
 
-    const yearPercent =
-        totalBudget.yearly > 0
-
-        ?
-
-        Math.min(
-
-            100,
-
-            Math.round(
-
-                totalBudget.yearUsed /
-                totalBudget.yearly *
-                100
-
-            )
-
+    applyProgressStyle(
+        document.getElementById(
+            "homeYearlyProgress"
+        ),
+        progressPercent(
+            budget.yearUsed,
+            budget.yearlyBudget
         )
-
-        :
-
-        0;
+    );
 
 
-    const monthRemainingClass =
-        remainingClass(
+    renderHomeCategoryBudgets();
 
-            totalBudget.monthRemaining,
+}
 
-            totalBudget.monthly
 
+function renderHomeCategoryBudgets() {
+
+    const container =
+        document.getElementById(
+            "homeCategoryBudgets"
         );
 
 
-    const yearRemainingClass =
-        remainingClass(
-
-            totalBudget.yearRemaining,
-
-            totalBudget.yearly
-
-        );
+    container.innerHTML = "";
 
 
-    let html = `
+    CATEGORIES.forEach(category => {
 
-        <div class="page">
+        const budget =
+            data.categoryBudgets[category];
 
 
-            <!-- =========================
-                 本月总预算
-            ========================== -->
+        const spending =
+            getCategorySpending(category);
 
-            <div class="card total-budget-card">
 
-                <div class="small">
-                    本月预算
+        const percent =
+            progressPercent(
+                spending.monthUsed,
+                budget.monthly
+            );
+
+
+        const div =
+            document.createElement("div");
+
+
+        div.className =
+            "category-budget";
+
+
+        div.innerHTML = `
+
+            <div class="category-budget-header">
+
+                <div class="category-budget-name">
+                    ${escapeHtml(category)}
                 </div>
 
-
-                <div class="big-number">
-                    ¥${money(
-                        totalBudget.monthUsed
-                    )}
-                </div>
-
-
-                <div class="budget-info">
-
-                    已消费 /
-                    ¥${money(
-                        totalBudget.monthly
-                    )}
-                    总预算
-
-                </div>
-
-
-                <div class="budget-bar">
-
-                    <div
-                        class="budget-fill"
-                        style="
-                            width:${monthPercent}%;
-                        "
-                    ></div>
-
-                </div>
-
-
-                <div class="budget-percent">
-
-                    ${monthPercent}% 已使用
-
-                </div>
-
-
-                <div class="budget-info">
-
-                    剩余预算：
-
-                    <strong
-                        class="${monthRemainingClass}"
-                    >
-
-                        ¥${money(
-                            totalBudget.monthRemaining
-                        )}
-
-                    </strong>
-
+                <div class="category-budget-value">
+                    ¥${formatMoney(spending.monthUsed)}
+                    /
+                    ¥${formatMoney(budget.monthly)}
                 </div>
 
             </div>
 
+            <div class="progress">
 
-            <!-- =========================
-                 年度总预算
-            ========================== -->
-
-            <div class="card total-budget-card">
-
-                <div class="small">
-                    年度预算
-                </div>
-
-
-                <div class="big-number">
-                    ¥${money(
-                        totalBudget.yearUsed
-                    )}
-                </div>
-
-
-                <div class="budget-info">
-
-                    已消费 /
-                    ¥${money(
-                        totalBudget.yearly
-                    )}
-                    总预算
-
-                </div>
-
-
-                <div class="budget-bar">
-
-                    <div
-                        class="budget-fill"
-                        style="
-                            width:${yearPercent}%;
-                        "
-                    ></div>
-
-                </div>
-
-
-                <div class="budget-percent">
-
-                    ${yearPercent}% 已使用
-
-                </div>
-
-
-                <div class="budget-info">
-
-                    剩余预算：
-
-                    <strong
-                        class="${yearRemainingClass}"
-                    >
-
-                        ¥${money(
-                            totalBudget.yearRemaining
-                        )}
-
-                    </strong>
-
-                </div>
+                <div
+                    class="progress-bar"
+                    style="width:${Math.min(100, percent)}%"
+                ></div>
 
             </div>
 
+            <div class="category-budget-sub">
 
-            <!-- =========================
-                 状态统计
-            ========================== -->
+                本月剩余
+                ¥${formatMoney(
+                    budget.monthly - spending.monthUsed
+                )}
 
-            <div class="stat-grid">
-
-
-                <div class="stat-card">
-
-                    <div class="stat-title">
-                        待审批
-                    </div>
-
-                    <div class="stat-value">
-                        ${pending}
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-title">
-                        已通过
-                    </div>
-
-                    <div class="stat-value">
-                        ${approved}
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-title">
-                        已购买
-                    </div>
-
-                    <div class="stat-value">
-                        ${purchased}
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-title">
-                        总申请
-                    </div>
-
-                    <div class="stat-value">
-                        ${data.expenses.length}
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-            <div style="height:14px"></div>
-
-
-            <button
-                class="btn"
-                onclick="showNewExpense()">
-
-                ＋ 新建消费申请
-
-            </button>
-
-
-            <div style="height:20px"></div>
-
-
-            <div class="section-title">
-                最近申请
-            </div>
-
-    `;
-
-
-    const recent =
-
-        [...data.expenses]
-
-            .sort(
-                (a,b) =>
-                    b.id - a.id
-            )
-
-            .slice(0,5);
-
-
-    if (
-        recent.length === 0
-    ) {
-
-        html += `
-
-            <div class="card empty">
-
-                还没有消费申请
+                · 年度已用
+                ¥${formatMoney(spending.yearUsed)}
+                /
+                ¥${formatMoney(budget.yearly)}
 
             </div>
 
         `;
 
-    } else {
 
-        recent.forEach(
-            expense => {
+        container.appendChild(div);
 
-                html +=
-                    expenseCard(
-                        expense
-                    );
+    });
 
-            }
-        );
+}
+
+
+/* ============================================================
+   Expense Card
+============================================================ */
+
+function expenseCard(expense) {
+
+    const div =
+        document.createElement("div");
+
+
+    div.className =
+        "expense-card";
+
+
+    let extra = "";
+
+
+    if (expense.refundedAt) {
+
+        extra = `
+            <div class="expense-time">
+                退款时间：${formatDateTime(expense.refundedAt)}
+            </div>
+        `;
 
     }
 
 
-    html += `
-
-        </div>
-
-    `;
-
-
-    document
-        .getElementById("app")
-        .innerHTML = html;
-
-}
-
-
-/* =====================================================
-   消费卡片
-===================================================== */
-
-function expenseCard(
-    expense
-) {
-
-    const stepCount =
-        STEPS.length;
-
-
-    const completed =
-        expense.approvals.length;
-
-
-    const percent =
-        Math.round(
-
-            completed /
-            stepCount *
-            100
-
-        );
-
-
-    return `
+    div.innerHTML = `
 
         <div
-            class="expense-item"
-            onclick="showExpense(
-                ${expense.id}
-            )"
+            class="expense-top"
+            onclick="showExpense('${expense.id}')"
         >
 
-            <div class="expense-top">
+            <div>
 
-                <div>
-
-                    <div class="expense-name">
-
-                        ${escapeHtml(
-                            expense.name
-                        )}
-
-                    </div>
-
-
-                    <div class="expense-meta">
-
-                        ${escapeHtml(
-                            expense.category
-                        )}
-
-                        ·
-
-                        ${(
-                            expense.createdAt ||
-                            ""
-                        ).slice(0,10)}
-
-                    </div>
-
+                <div class="expense-name">
+                    ${escapeHtml(expense.name)}
                 </div>
 
+                <div class="expense-meta">
 
-                <div class="expense-price">
+                    <span class="status ${statusClass(expense.status)}">
+                        ${statusText(expense.status)}
+                    </span>
 
-                    ¥${money(
-                        expense.price
-                    )}
+                    <span class="meta-tag">
+                        ${escapeHtml(expense.category)}
+                    </span>
 
                 </div>
 
             </div>
 
-
-            <span
-                class="${statusClass(
-                    expense.status
-                )}"
-            >
-
-                ${statusText(
-                    expense.status
-                )}
-
-            </span>
-
-
-            ${
-                expense.status === "pending"
-
-                ?
-
-                `
-
-                <div class="progress">
-
-                    <div
-                        class="progress-bar"
-                        style="
-                            width:${percent}%
-                        "
-                    ></div>
-
-                </div>
-
-
-                <div class="small">
-
-                    审批进度
-                    ${completed}/${stepCount}
-
-                </div>
-
-                `
-
-                :
-
-                ""
-
-            }
-
-        </div>
-
-    `;
-
-}
-
-
-/* =====================================================
-   新建申请
-===================================================== */
-
-function showNewExpense() {
-
-    let html = `
-
-        <div class="page">
-
-
-            <button
-                class="btn btn-secondary back-btn"
-                onclick="showPage('home')">
-
-                ← 返回
-
-            </button>
-
-
-            <div class="card">
-
-
-                <div class="section-title">
-
-                    新建消费申请
-
-                </div>
-
-
-                <label>
-                    商品 / 消费名称
-                </label>
-
-
-                <input
-                    id="new-name"
-                    type="text"
-                    placeholder="例如：Sony 耳机"
-                >
-
-
-                <label>
-                    价格
-                </label>
-
-
-                <input
-                    id="new-price"
-                    type="number"
-                    step="0.01"
-                    min="0"
-                    placeholder="0.00"
-                >
-
-
-                <label>
-                    分类
-                </label>
-
-
-                <select
-                    id="new-category"
-                >
-
-                    ${
-                        CATEGORIES
-                            .map(
-                                c =>
-                                    `<option
-                                        value="${c}"
-                                    >
-                                        ${c}
-                                    </option>`
-                            )
-                            .join("")
-                    }
-
-                </select>
-
-
-                <label>
-                    申请理由
-                </label>
-
-
-                <textarea
-                    id="new-reason"
-                    placeholder="为什么想买？现在为什么需要？"
-                ></textarea>
-
-
-                <button
-                    class="btn"
-                    onclick="createExpense()">
-
-                    提交申请
-
-                </button>
-
-
+            <div class="expense-price">
+                ¥${formatMoney(expense.price)}
             </div>
 
         </div>
 
+        ${
+            expense.note
+            ?
+            `<div class="expense-note">
+                ${escapeHtml(expense.note)}
+            </div>`
+            :
+            ""
+        }
+
+        <div class="expense-time">
+            申请时间：${formatDateTime(expense.createdAt)}
+        </div>
+
+        ${
+            expense.purchasedAt
+            ?
+            `<div class="expense-time">
+                购买时间：${formatDateTime(expense.purchasedAt)}
+            </div>`
+            :
+            ""
+        }
+
+        ${extra}
+
     `;
 
 
-    document
-        .getElementById("app")
-        .innerHTML = html;
+    return div;
 
 }
 
 
-function createExpense() {
+/* ============================================================
+   Pending
+============================================================ */
 
-    const name =
-        document
-            .getElementById(
-                "new-name"
-            )
-            .value
-            .trim();
+function renderPending() {
 
-
-    const price =
-        Number(
-            document
-                .getElementById(
-                    "new-price"
-                )
-                .value
+    const container =
+        document.getElementById(
+            "pendingList"
         );
 
 
-    const category =
-        document
-            .getElementById(
-                "new-category"
-            )
-            .value;
+    container.innerHTML = "";
 
 
-    const reason =
-        document
-            .getElementById(
-                "new-reason"
-            )
-            .value
-            .trim();
+    const list =
+        data.expenses.filter(
+            x =>
+                x.status === "pending" ||
+                x.status === "approved"
+        );
 
 
-    if (!name) {
+    if (list.length === 0) {
 
-        alert(
-            "请输入商品名称"
+        container.innerHTML = emptyHtml(
+            "✓",
+            "目前没有待处理申请"
         );
 
         return;
@@ -1908,14 +2269,287 @@ function createExpense() {
     }
 
 
+    list.sort(
+        (a, b) =>
+            new Date(b.createdAt) -
+            new Date(a.createdAt)
+    );
+
+
+    list.forEach(expense => {
+
+        container.appendChild(
+            expenseCard(expense)
+        );
+
+    });
+
+}
+
+
+/* ============================================================
+   Records
+============================================================ */
+
+function renderRecords() {
+
+    const container =
+        document.getElementById(
+            "recordsList"
+        );
+
+
+    container.innerHTML = "";
+
+
+    const list =
+        [...data.expenses]
+        .sort(
+            (a, b) =>
+                new Date(b.createdAt) -
+                new Date(a.createdAt)
+        );
+
+
+    if (list.length === 0) {
+
+        container.innerHTML = emptyHtml(
+            "☷",
+            "还没有消费记录"
+        );
+
+        return;
+
+    }
+
+
+    list.forEach(expense => {
+
+        container.appendChild(
+            expenseCard(expense)
+        );
+
+    });
+
+}
+
+
+/* ============================================================
+   New Form
+============================================================ */
+
+let newFormValues = {
+
+    usefulness: null,
+
+    frequency: null,
+
+    alternative: null,
+
+    price: null
+
+};
+
+
+function initNewForm() {
+
+    const select =
+        document.getElementById(
+            "newCategory"
+        );
+
+
+    select.innerHTML = "";
+
+
+    CATEGORIES.forEach(category => {
+
+        const option =
+            document.createElement("option");
+
+
+        option.value = category;
+
+        option.textContent = category;
+
+
+        select.appendChild(option);
+
+    });
+
+
+    renderChoices(
+        "usefulnessChoices",
+        "usefulness"
+    );
+
+
+    renderChoices(
+        "frequencyChoices",
+        "frequency"
+    );
+
+
+    renderChoices(
+        "alternativeChoices",
+        "alternative"
+    );
+
+
+    renderChoices(
+        "priceChoices",
+        "price"
+    );
+
+}
+
+
+function renderChoices(containerId, type) {
+
+    const container =
+        document.getElementById(
+            containerId
+        );
+
+
+    container.innerHTML = "";
+
+
+    CHOICES[type].forEach(choice => {
+
+        const button =
+            document.createElement("button");
+
+
+        button.type = "button";
+
+        button.className =
+            "choice";
+
+
+        if (
+            newFormValues[type] ===
+            choice.value
+        ) {
+
+            button.classList.add("selected");
+
+        }
+
+
+        button.innerHTML = `
+
+            <div class="choice-title">
+                ${escapeHtml(choice.title)}
+            </div>
+
+            <div class="choice-desc">
+                ${escapeHtml(choice.desc)}
+            </div>
+
+        `;
+
+
+        button.onclick = () => {
+
+            newFormValues[type] =
+                choice.value;
+
+
+            renderChoices(
+                containerId,
+                type
+            );
+
+        };
+
+
+        container.appendChild(button);
+
+    });
+
+}
+
+
+function submitApplication() {
+
+    const name =
+        document.getElementById(
+            "newName"
+        ).value.trim();
+
+
+    const price =
+        Number(
+            document.getElementById(
+                "newPrice"
+            ).value
+        );
+
+
+    const category =
+        document.getElementById(
+            "newCategory"
+        ).value;
+
+
+    const note =
+        document.getElementById(
+            "newNote"
+        ).value.trim();
+
+
+    if (!name) {
+
+        showToast("请输入想买的东西");
+
+        return;
+
+    }
+
+
     if (
-        !price ||
+        !Number.isFinite(price) ||
         price <= 0
     ) {
 
-        alert(
-            "请输入正确的价格"
-        );
+        showToast("请输入正确的价格");
+
+        return;
+
+    }
+
+
+    if (!newFormValues.usefulness) {
+
+        showToast("请完成「有用程度」");
+
+        return;
+
+    }
+
+
+    if (!newFormValues.frequency) {
+
+        showToast("请完成「使用频率」");
+
+        return;
+
+    }
+
+
+    if (!newFormValues.alternative) {
+
+        showToast("请完成「已有替代品」");
+
+        return;
+
+    }
+
+
+    if (!newFormValues.price) {
+
+        showToast("请完成「价格合理性」");
 
         return;
 
@@ -1925,7 +2559,10 @@ function createExpense() {
     const expense = {
 
         id:
-            Date.now(),
+            Date.now().toString() +
+            Math.random()
+                .toString(36)
+                .substring(2, 8),
 
         name,
 
@@ -1933,645 +2570,234 @@ function createExpense() {
 
         category,
 
-        reason,
+        note,
 
-        status:
-            "pending",
+        usefulness:
+            newFormValues.usefulness,
 
-        currentStep:
-            0,
+        frequency:
+            newFormValues.frequency,
+
+        alternative:
+            newFormValues.alternative,
+
+        priceReason:
+            newFormValues.price,
+
+        status: "pending",
 
         createdAt:
             new Date().toISOString(),
 
-        approvals:
-            []
+        purchasedAt: null,
+
+        refundedAt: null
 
     };
 
 
-    data.expenses.push(
-        expense
-    );
-
+    data.expenses.push(expense);
 
     saveData();
 
 
-    showExpense(
-        expense.id
-    );
+    newFormValues = {
+
+        usefulness: null,
+
+        frequency: null,
+
+        alternative: null,
+
+        price: null
+
+    };
+
+
+    document.getElementById("newName")
+        .value = "";
+
+    document.getElementById("newPrice")
+        .value = "";
+
+    document.getElementById("newNote")
+        .value = "";
+
+
+    showToast("申请已提交");
+
+
+    showExpense(expense.id);
 
 }
 
 
-/* =====================================================
-   消费详情 + 审批
-===================================================== */
+/* ============================================================
+   Detail
+============================================================ */
 
 function showExpense(id) {
 
     const expense =
         data.expenses.find(
-            e =>
-                e.id === id
+            x => x.id === id
         );
 
 
     if (!expense) {
 
-        alert(
-            "找不到这个申请"
-        );
+        showToast("找不到这条记录");
 
         return;
 
     }
 
 
-    let html = `
-
-        <div class="page">
+    showPageWithoutNav("detail");
 
 
-            <button
-                class="btn btn-secondary back-btn"
-                onclick="showPage('home')">
+    const container =
+        document.getElementById(
+            "detailContent"
+        );
 
-                ← 返回
 
-            </button>
+    let actionHtml = "";
 
+
+    if (expense.status === "pending") {
+
+        actionHtml = `
 
             <div class="card">
 
-
-                <div class="expense-name">
-
-                    ${escapeHtml(
-                        expense.name
-                    )}
-
+                <div class="card-title">
+                    最终决定
                 </div>
 
+                <button
+                    class="btn btn-primary btn-block"
+                    onclick="approveExpense('${expense.id}')"
+                >
+                    ✓ 审批通过
+                </button>
 
-                <div class="money">
+                <div style="height:8px;"></div>
 
-                    ¥${money(
-                        expense.price
-                    )}
+                <button
+                    class="btn btn-danger btn-block"
+                    onclick="rejectExpense('${expense.id}')"
+                >
+                    ✕ 拒绝申请
+                </button>
 
+            </div>
+
+        `;
+
+    }
+
+
+    if (expense.status === "approved") {
+
+        actionHtml = `
+
+            <div class="card">
+
+                <div class="card-title">
+                    已审批通过
                 </div>
 
-
-                <div class="expense-meta">
-
-                    ${escapeHtml(
-                        expense.category
-                    )}
-
-                    ·
-
-                    ${(
-                        expense.createdAt ||
-                        ""
-                    ).slice(0,10)}
-
+                <div style="
+                    color:#666;
+                    font-size:13px;
+                    margin-bottom:12px;
+                    line-height:1.5;
+                ">
+                    目前还没有占用消费额度。
+                    只有真正购买后才会计入预算。
                 </div>
 
+                <button
+                    class="btn btn-primary btn-block"
+                    onclick="markPurchased('${expense.id}')"
+                >
+                    🛒 标记为已购买
+                </button>
 
-                <hr>
+            </div>
+
+        `;
+
+    }
 
 
-                <div class="small">
-                    申请理由
+    if (expense.status === "purchased") {
+
+        actionHtml = `
+
+            <div class="card">
+
+                <div class="card-title">
+                    已购买
                 </div>
 
+                <div style="
+                    color:#16823c;
+                    font-size:13px;
+                    margin-bottom:12px;
+                    line-height:1.5;
+                ">
+                    当前 ¥${formatMoney(expense.price)}
+                    正在占用总预算和「${escapeHtml(expense.category)}」预算。
+                </div>
 
-                <div class="reason">
+                <button
+                    class="btn btn-refund btn-block"
+                    onclick="markRefunded('${expense.id}')"
+                >
+                    ↩️ 标记为已退款
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+
+    if (expense.status === "refunded") {
+
+        actionHtml = `
+
+            <div class="card">
+
+                <div class="card-title">
+                    已退款
+                </div>
+
+                <div style="
+                    color:#7253a6;
+                    font-size:13px;
+                    line-height:1.6;
+                ">
+
+                    这笔消费记录仍然保留。
+
+                    <br>
+
+                    ¥${formatMoney(expense.price)}
+                    已经从总预算和分类预算中释放。
 
                     ${
-                        escapeHtml(
-                            expense.reason
-                        ) ||
-                        "未填写"
+                        expense.refundedAt
+                        ?
+                        `<br><br>
+                        退款时间：
+                        ${formatDateTime(expense.refundedAt)}`
+                        :
+                        ""
                     }
-
-                </div>
-
-
-            </div>
-
-    `;
-
-
-    const budget =
-        getBudgetInfo(
-
-            expense.category,
-
-            expense.price
-
-        );
-
-
-    const totalBudget =
-        getTotalBudgetInfo(
-            expense.price
-        );
-
-
-    const categoryMonthClass =
-        remainingClass(
-            budget.monthRemaining,
-            budget.monthly
-        );
-
-
-    const categoryYearClass =
-        remainingClass(
-            budget.yearRemaining,
-            budget.yearly
-        );
-
-
-    const totalMonthClass =
-        remainingClass(
-            totalBudget.monthRemaining,
-            totalBudget.monthly
-        );
-
-
-    const totalYearClass =
-        remainingClass(
-            totalBudget.yearRemaining,
-            totalBudget.yearly
-        );
-
-
-    html += `
-
-        <!-- =========================
-             总预算
-        ========================== -->
-
-        <div class="card">
-
-            <div class="section-title">
-
-                总预算
-
-            </div>
-
-
-            <div class="budget-info">
-
-                本月总预算：
-
-                ¥${money(
-                    totalBudget.monthly
-                )}
-
-                <br>
-
-
-                本月已消费：
-
-                ¥${money(
-                    totalBudget.monthUsed
-                )}
-
-                <br>
-
-
-                加上本次申请后：
-
-                <strong
-                    class="${totalMonthClass}"
-                >
-
-                    ¥${money(
-                        totalBudget.monthRemaining
-                    )}
-
-                </strong>
-
-                剩余
-
-
-                <br><br>
-
-
-                年度总预算：
-
-                ¥${money(
-                    totalBudget.yearly
-                )}
-
-                <br>
-
-
-                本年已消费：
-
-                ¥${money(
-                    totalBudget.yearUsed
-                )}
-
-                <br>
-
-
-                加上本次申请后：
-
-                <strong
-                    class="${totalYearClass}"
-                >
-
-                    ¥${money(
-                        totalBudget.yearRemaining
-                    )}
-
-                </strong>
-
-                剩余
-
-            </div>
-
-        </div>
-
-
-        <!-- =========================
-             分类预算
-        ========================== -->
-
-        <div class="card">
-
-            <div class="section-title">
-
-                ${escapeHtml(
-                    expense.category
-                )} 分类预算
-
-            </div>
-
-
-            <div class="budget-info">
-
-                月预算：
-
-                ¥${money(
-                    budget.monthly
-                )}
-
-                <br>
-
-
-                本月已消费：
-
-                ¥${money(
-                    budget.monthUsed
-                )}
-
-                <br>
-
-
-                加上本次申请后：
-
-                <strong
-                    class="${categoryMonthClass}"
-                >
-
-                    ¥${money(
-                        budget.monthRemaining
-                    )}
-
-                </strong>
-
-                剩余
-
-
-                <br><br>
-
-
-                年预算：
-
-                ¥${money(
-                    budget.yearly
-                )}
-
-                <br>
-
-
-                本年已消费：
-
-                ¥${money(
-                    budget.yearUsed
-                )}
-
-                <br>
-
-
-                加上本次申请后：
-
-                <strong
-                    class="${categoryYearClass}"
-                >
-
-                    ¥${money(
-                        budget.yearRemaining
-                    )}
-
-                </strong>
-
-                剩余
-
-            </div>
-
-        </div>
-
-    `;
-
-
-    html += `
-
-        <div class="card">
-
-
-            <div class="section-title">
-
-                审批流程
-
-            </div>
-
-    `;
-
-
-    STEPS.forEach(
-        (step,index) => {
-
-            const approval =
-                expense.approvals.find(
-                    a =>
-                        a.step === index
-                );
-
-
-            if (approval) {
-
-                html += `
-
-                    <div class="step step-done">
-
-
-                        <div class="step-number">
-
-                            第 ${index + 1} 节点
-
-                        </div>
-
-
-                        <div class="step-title">
-
-                            ${step.title}
-
-                        </div>
-
-
-                        <p>
-
-                            ✅
-                            ${escapeHtml(
-                                approval.answer
-                            )}
-
-                        </p>
-
-
-                        ${
-                            approval.comment
-
-                            ?
-
-                            `
-
-                            <div class="small">
-
-                                备注：
-                                ${escapeHtml(
-                                    approval.comment
-                                )}
-
-                            </div>
-
-                            `
-
-                            :
-
-                            ""
-
-                        }
-
-                    </div>
-
-                `;
-
-                return;
-
-            }
-
-
-            if (
-
-                expense.status ===
-                    "pending"
-
-                &&
-
-                index ===
-                    expense.currentStep
-
-            ) {
-
-                html += `
-
-                    <div
-                        class="
-                            step
-                            step-current
-                        "
-                    >
-
-
-                        <div class="step-number">
-
-                            第 ${index + 1} 节点
-
-                        </div>
-
-
-                        <div class="step-title">
-
-                            ${step.title}
-
-                        </div>
-
-
-                        <p>
-
-                            ${step.question}
-
-                        </p>
-
-
-                        <form
-                            onsubmit="
-                                submitApproval(
-                                    event,
-                                    ${expense.id},
-                                    ${index}
-                                )
-                            "
-                        >
-
-                `;
-
-
-                step.options.forEach(
-                    option => {
-
-                        html += `
-
-                            <label
-                                class="option"
-                            >
-
-                                <input
-                                    type="radio"
-                                    name="answer"
-                                    value="${option}"
-                                    required
-                                >
-
-                                ${option}
-
-                            </label>
-
-                        `;
-
-                    }
-                );
-
-
-                html += `
-
-                            <textarea
-                                name="comment"
-                                placeholder="备注（可选）"
-                            ></textarea>
-
-
-                            <button
-                                class="btn"
-                                type="submit"
-                            >
-
-                                提交此节点
-
-                            </button>
-
-
-                        </form>
-
-                    </div>
-
-                `;
-
-            } else {
-
-                html += `
-
-                    <div class="step">
-
-
-                        <div class="step-number">
-
-                            第 ${index + 1} 节点
-
-                        </div>
-
-
-                        <div class="step-title">
-
-                            ${step.title}
-
-                        </div>
-
-
-                        <div class="small">
-
-                            ⏳
-                            等待前面的节点
-
-                        </div>
-
-
-                    </div>
-
-                `;
-
-            }
-
-        }
-    );
-
-
-    html += `
-
-        </div>
-
-        </div>
-
-    `;
-
-
-    if (
-        expense.status ===
-        "approved"
-    ) {
-
-        html += `
-
-            <div class="page">
-
-                <div class="card">
-
-
-                    <div class="section-title">
-
-                        🎉 审批通过
-
-                    </div>
-
-
-                    <p>
-
-                        这个消费已经通过所有审批节点。
-
-                    </p>
-
-
-                    <button
-                        class="btn btn-success"
-                        onclick="
-                            markPurchased(
-                                ${expense.id}
-                            )
-                        "
-                    >
-
-                        标记为已购买
-
-                    </button>
-
 
                 </div>
 
@@ -2582,32 +2808,21 @@ function showExpense(id) {
     }
 
 
-    if (
-        expense.status ===
-        "rejected"
-    ) {
+    if (expense.status === "rejected") {
 
-        html += `
+        actionHtml = `
 
-            <div class="page">
+            <div class="card">
 
-                <div class="card">
+                <div class="card-title">
+                    已拒绝
+                </div>
 
-
-                    <div class="section-title">
-
-                        ❌ 已拒绝
-
-                    </div>
-
-
-                    <p>
-
-                        这个消费没有通过最终审批。
-
-                    </p>
-
-
+                <div style="
+                    color:#d93025;
+                    font-size:13px;
+                ">
+                    此申请不会占用预算。
                 </div>
 
             </div>
@@ -2615,843 +2830,993 @@ function showExpense(id) {
         `;
 
     }
-
-
-    document
-        .getElementById("app")
-        .innerHTML = html;
-
-}
-
-
-/* =====================================================
-   提交审批
-===================================================== */
-
-function submitApproval(
-    event,
-    expenseId,
-    stepIndex
-) {
-
-    event.preventDefault();
-
-
-    const form =
-        event.target;
-
-
-    const answer =
-        form.querySelector(
-            'input[name="answer"]:checked'
-        ).value;
-
-
-    const comment =
-        form.querySelector(
-            'textarea[name="comment"]'
-        ).value
-        .trim();
-
-
-    const expense =
-        data.expenses.find(
-            e =>
-                e.id === expenseId
-        );
-
-
-    if (!expense) {
-
-        return;
-
-    }
-
-
-    expense.approvals.push({
-
-        step:
-            stepIndex,
-
-        answer,
-
-        comment,
-
-        createdAt:
-            new Date().toISOString()
-
-    });
-
-
-    if (
-        stepIndex ===
-        STEPS.length - 1
-    ) {
-
-        if (
-            answer === "通过"
-        ) {
-
-            expense.status =
-                "approved";
-
-        }
-
-        else if (
-            answer === "拒绝"
-        ) {
-
-            expense.status =
-                "rejected";
-
-        }
-
-        else {
-
-            /*
-             * 暂缓以后，
-             * 最终节点可以重新选择。
-             */
-
-            expense.status =
-                "pending";
-
-
-            expense.currentStep =
-                stepIndex;
-
-
-            expense.approvals =
-                expense.approvals.filter(
-                    a =>
-                        a.step !==
-                        stepIndex
-                );
-
-        }
-
-    }
-
-    else {
-
-        expense.currentStep =
-            stepIndex + 1;
-
-    }
-
-
-    saveData();
-
-
-    showExpense(
-        expenseId
-    );
-
-}
-
-
-/* =====================================================
-   标记购买
-===================================================== */
-
-function markPurchased(id) {
-
-    const expense =
-        data.expenses.find(
-            e =>
-                e.id === id
-        );
-
-
-    if (!expense) {
-
-        return;
-
-    }
-
-
-    if (
-        !confirm(
-            "确定已经购买这个东西了吗？"
-        )
-    ) {
-
-        return;
-
-    }
-
-
-    expense.status =
-        "purchased";
 
 
     /*
-     * 单独记录真正购买的时间。
-     * 预算统计使用这个时间。
+     * 预算信息
+     *
+     * 对于 purchased：
+     * 显示当前已经占用之后的剩余额度。
+     *
+     * 对于 refunded：
+     * 不把这笔费用重新算进去，
+     * 直接显示当前预算状态。
+     *
+     * 对于 pending / approved：
+     * 显示如果现在购买，会剩多少。
      */
 
-    expense.purchasedAt =
+    let extraPrice = 0;
+
+
+    if (
+        expense.status !== "purchased" &&
+        expense.status !== "refunded"
+    ) {
+
+        extraPrice =
+            Number(expense.price) || 0;
+
+    }
+
+
+    const totalBudget =
+        getTotalBudgetInfo(extraPrice);
+
+
+    const categoryBudget =
+        data.categoryBudgets[
+            expense.category
+        ];
+
+
+    const categorySpending =
+        getCategorySpending(
+            expense.category
+        );
+
+
+    let budgetDescription = "";
+
+
+    if (expense.status === "purchased") {
+
+        budgetDescription = `
+            <div style="
+                font-size:12px;
+                color:#16823c;
+                margin-bottom:12px;
+            ">
+                本笔消费目前正在占用预算。
+            </div>
+        `;
+
+    } else if (expense.status === "refunded") {
+
+        budgetDescription = `
+            <div style="
+                font-size:12px;
+                color:#7253a6;
+                margin-bottom:12px;
+            ">
+                本笔消费已经退款，不再占用预算。
+            </div>
+        `;
+
+    } else {
+
+        budgetDescription = `
+            <div style="
+                font-size:12px;
+                color:#888;
+                margin-bottom:12px;
+            ">
+                如果购买这件商品，以下是加入本笔金额后的预算情况。
+            </div>
+        `;
+
+    }
+
+
+    container.innerHTML = `
+
+        <div class="card">
+
+            <div class="detail-title">
+                ${escapeHtml(expense.name)}
+            </div>
+
+            <div class="detail-price">
+                ¥${formatMoney(expense.price)}
+            </div>
+
+            <div class="expense-meta">
+
+                <span class="status ${statusClass(expense.status)}">
+                    ${statusText(expense.status)}
+                </span>
+
+                <span class="meta-tag">
+                    ${escapeHtml(expense.category)}
+                </span>
+
+            </div>
+
+
+            <div class="detail-section">
+
+                <div class="detail-section-title">
+                    申请信息
+                </div>
+
+                <div class="detail-row">
+
+                    <div class="detail-key">
+                        申请时间
+                    </div>
+
+                    <div class="detail-value">
+                        ${formatDateTime(expense.createdAt)}
+                    </div>
+
+                </div>
+
+                ${
+                    expense.purchasedAt
+                    ?
+                    `
+                    <div class="detail-row">
+
+                        <div class="detail-key">
+                            购买时间
+                        </div>
+
+                        <div class="detail-value">
+                            ${formatDateTime(expense.purchasedAt)}
+                        </div>
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+                ${
+                    expense.refundedAt
+                    ?
+                    `
+                    <div class="detail-row">
+
+                        <div class="detail-key">
+                            退款时间
+                        </div>
+
+                        <div class="detail-value">
+                            ${formatDateTime(expense.refundedAt)}
+                        </div>
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+                <div class="detail-row">
+
+                    <div class="detail-key">
+                        分类
+                    </div>
+
+                    <div class="detail-value">
+                        ${escapeHtml(expense.category)}
+                    </div>
+
+                </div>
+
+                ${
+                    expense.note
+                    ?
+                    `
+                    <div class="detail-row">
+
+                        <div class="detail-key">
+                            备注
+                        </div>
+
+                        <div class="detail-value">
+                            ${escapeHtml(expense.note)}
+                        </div>
+
+                    </div>
+                    `
+                    :
+                    ""
+                }
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-title">
+                审批判断
+            </div>
+
+            ${renderApprovalStep(
+                "有用程度",
+                getChoiceTitle(
+                    "usefulness",
+                    expense.usefulness
+                ),
+                true
+            )}
+
+            ${renderApprovalStep(
+                "使用频率",
+                getChoiceTitle(
+                    "frequency",
+                    expense.frequency
+                ),
+                true
+            )}
+
+            ${renderApprovalStep(
+                "已有替代品",
+                getChoiceTitle(
+                    "alternative",
+                    expense.alternative
+                ),
+                true
+            )}
+
+            ${renderApprovalStep(
+                "价格合理性",
+                getChoiceTitle(
+                    "price",
+                    expense.priceReason
+                ),
+                true
+            )}
+
+            ${renderApprovalStep(
+                "最终决定",
+                statusText(expense.status),
+                expense.status !== "pending"
+            )}
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-title">
+                预算影响
+            </div>
+
+            ${budgetDescription}
+
+            <div class="detail-row">
+
+                <div class="detail-key">
+                    本月总预算
+                </div>
+
+                <div class="detail-value">
+
+                    ¥${formatMoney(
+                        totalBudget.monthUsed
+                    )}
+
+                    /
+                    ¥${formatMoney(
+                        totalBudget.monthlyBudget
+                    )}
+
+                    <br>
+
+                    <span style="color:#999;">
+                        剩余 ¥${formatMoney(
+                            totalBudget.monthRemaining
+                        )}
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <div class="detail-key">
+                    年度总预算
+                </div>
+
+                <div class="detail-value">
+
+                    ¥${formatMoney(
+                        totalBudget.yearUsed
+                    )}
+
+                    /
+                    ¥${formatMoney(
+                        totalBudget.yearlyBudget
+                    )}
+
+                    <br>
+
+                    <span style="color:#999;">
+                        剩余 ¥${formatMoney(
+                            totalBudget.yearRemaining
+                        )}
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <div class="detail-key">
+                    ${escapeHtml(expense.category)} 本月预算
+                </div>
+
+                <div class="detail-value">
+
+                    ¥${formatMoney(
+                        categorySpending.monthUsed
+                    )}
+
+                    /
+                    ¥${formatMoney(
+                        categoryBudget.monthly
+                    )}
+
+                    <br>
+
+                    <span style="color:#999;">
+                        剩余
+                        ¥${formatMoney(
+                            categoryBudget.monthly -
+                            categorySpending.monthUsed -
+                            (
+                                expense.status === "purchased"
+                                ? 0
+                                : expense.status === "refunded"
+                                ? 0
+                                : Number(expense.price)
+                            )
+                        )}
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <div class="detail-key">
+                    ${escapeHtml(expense.category)} 年度预算
+                </div>
+
+                <div class="detail-value">
+
+                    ¥${formatMoney(
+                        categorySpending.yearUsed
+                    )}
+
+                    /
+                    ¥${formatMoney(
+                        categoryBudget.yearly
+                    )}
+
+                    <br>
+
+                    <span style="color:#999;">
+                        剩余
+                        ¥${formatMoney(
+                            categoryBudget.yearly -
+                            categorySpending.yearUsed -
+                            (
+                                expense.status === "purchased"
+                                ? 0
+                                : expense.status === "refunded"
+                                ? 0
+                                : Number(expense.price)
+                            )
+                        )}
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        ${actionHtml}
+
+
+        <button
+            class="btn btn-secondary btn-block"
+            onclick="showPage('records')"
+        >
+            返回记录
+        </button>
+
+    `;
+
+}
+
+
+/* ============================================================
+   Approval
+============================================================ */
+
+function renderApprovalStep(
+    title,
+    desc,
+    done
+) {
+
+    return `
+
+        <div class="approval-step ${done ? "done" : ""}">
+
+            <div class="approval-line"></div>
+
+            <div class="approval-dot">
+                ${done ? "✓" : "•"}
+            </div>
+
+            <div class="approval-content">
+
+                <div class="approval-title">
+                    ${escapeHtml(title)}
+                </div>
+
+                <div class="approval-desc">
+                    ${escapeHtml(desc || "待处理")}
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ============================================================
+   Approve
+============================================================ */
+
+function approveExpense(id) {
+
+    const expense =
+        data.expenses.find(
+            x => x.id === id
+        );
+
+
+    if (!expense) return;
+
+
+    if (
+        expense.status !== "pending"
+    ) {
+
+        showToast("当前状态无法审批");
+
+        return;
+
+    }
+
+
+    expense.status = "approved";
+
+    expense.approvedAt =
         new Date().toISOString();
 
 
     saveData();
 
 
+    showToast("已审批通过");
+
     showExpense(id);
 
 }
 
 
-/* =====================================================
-   待审批
-===================================================== */
+/* ============================================================
+   Reject
+============================================================ */
 
-function renderPending() {
+function rejectExpense(id) {
 
-    const pending =
-
-        data.expenses
-
-            .filter(
-                e =>
-                    e.status ===
-                    "pending"
-            )
-
-            .sort(
-                (a,b) =>
-                    b.id - a.id
-            );
+    const expense =
+        data.expenses.find(
+            x => x.id === id
+        );
 
 
-    let html = `
-
-        <div class="page">
-
-
-            <div class="section-title">
-
-                待审批
-
-            </div>
-
-    `;
+    if (!expense) return;
 
 
     if (
-        pending.length === 0
+        expense.status !== "pending"
     ) {
 
-        html += `
-
-            <div class="card empty">
-
-                🎉 没有待审批项目
-
-            </div>
-
-        `;
-
-    } else {
-
-        pending.forEach(
-            expense => {
-
-                html +=
-                    expenseCard(
-                        expense
-                    );
-
-            }
-        );
-
-    }
-
-
-    html += `
-
-        </div>
-
-    `;
-
-
-    document
-        .getElementById("app")
-        .innerHTML = html;
-
-}
-
-
-/* =====================================================
-   消费记录
-===================================================== */
-
-function renderRecords() {
-
-    const list =
-
-        [...data.expenses]
-
-            .sort(
-                (a,b) =>
-                    b.id - a.id
-            );
-
-
-    let html = `
-
-        <div class="page">
-
-
-            <div class="section-title">
-
-                消费记录
-
-            </div>
-
-    `;
-
-
-    if (
-        list.length === 0
-    ) {
-
-        html += `
-
-            <div class="card empty">
-
-                还没有记录
-
-            </div>
-
-        `;
-
-    } else {
-
-        list.forEach(
-            expense => {
-
-                html +=
-                    expenseCard(
-                        expense
-                    );
-
-            }
-        );
-
-    }
-
-
-    html += `
-
-        </div>
-
-    `;
-
-
-    document
-        .getElementById("app")
-        .innerHTML = html;
-
-}
-
-
-/* =====================================================
-   设置 / 预算
-===================================================== */
-
-function renderSettings() {
-
-    const totalBudget =
-        data.totalBudget ||
-        DEFAULT_TOTAL_BUDGET;
-
-
-    let html = `
-
-        <div class="page">
-
-
-            <!-- =========================
-                 总预算
-            ========================== -->
-
-            <div class="section-title">
-
-                总预算
-
-            </div>
-
-
-            <div class="card">
-
-
-                <div class="budget-info">
-
-                    总预算控制整个消费支出。
-
-                </div>
-
-
-                <hr>
-
-
-                <label>
-
-                    每月总预算
-
-                </label>
-
-
-                <input
-                    type="number"
-                    step="0.01"
-                    min="0"
-                    value="${totalBudget.monthly}"
-                    id="total-monthly"
-                >
-
-
-                <label>
-
-                    每年总预算
-
-                </label>
-
-
-                <input
-                    type="number"
-                    step="0.01"
-                    min="0"
-                    value="${totalBudget.yearly}"
-                    id="total-yearly"
-                >
-
-
-                <button
-                    class="btn btn-secondary"
-                    onclick="saveTotalBudget()"
-                >
-
-                    保存总预算
-
-                </button>
-
-
-            </div>
-
-
-            <!-- =========================
-                 分类预算
-            ========================== -->
-
-            <div class="section-title">
-
-                分类预算
-
-            </div>
-
-    `;
-
-
-    CATEGORIES.forEach(
-        category => {
-
-            const budget =
-                data.budgets[category];
-
-
-            const used =
-                getCategorySpending(
-                    category,
-                    "month"
-                );
-
-
-            const percent =
-
-                budget.monthly > 0
-
-                ?
-
-                Math.min(
-
-                    100,
-
-                    Math.round(
-
-                        used /
-                        budget.monthly *
-                        100
-
-                    )
-
-                )
-
-                :
-
-                0;
-
-
-            html += `
-
-                <div class="card budget-row">
-
-
-                    <div class="budget-name">
-
-                        ${category}
-
-                    </div>
-
-
-                    <div class="budget-info">
-
-                        本月：
-
-                        ¥${money(used)}
-
-                        /
-
-                        ¥${money(
-                            budget.monthly
-                        )}
-
-
-                        <div
-                            class="budget-bar"
-                        >
-
-                            <div
-                                class="budget-fill"
-                                style="
-                                    width:${percent}%
-                                "
-                            ></div>
-
-                        </div>
-
-
-                        年度预算：
-
-                        ¥${money(
-                            budget.yearly
-                        )}
-
-                    </div>
-
-
-                    <hr>
-
-
-                    <label>
-
-                        每月预算
-
-                    </label>
-
-
-                    <input
-                        type="number"
-                        step="0.01"
-                        min="0"
-                        value="${budget.monthly}"
-                        id="monthly-${category}"
-                    >
-
-
-                    <label>
-
-                        每年预算
-
-                    </label>
-
-
-                    <input
-                        type="number"
-                        step="0.01"
-                        min="0"
-                        value="${budget.yearly}"
-                        id="yearly-${category}"
-                    >
-
-
-                    <button
-                        class="
-                            btn
-                            btn-secondary
-                        "
-                        onclick="
-                            saveBudget(
-                                '${category}'
-                            )
-                        "
-                    >
-
-                        保存预算
-
-                    </button>
-
-
-                </div>
-
-            `;
-
-        }
-    );
-
-
-    html += `
-
-
-            <!-- =========================
-                 数据管理
-            ========================== -->
-
-            <div class="section-title">
-
-                数据管理
-
-            </div>
-
-
-            <div class="card">
-
-
-                <button
-                    class="btn"
-                    onclick="exportData()"
-                >
-
-                    导出数据
-
-                </button>
-
-
-                <div style="height:10px"></div>
-
-
-                <label
-                    class="
-                        btn
-                        btn-secondary
-                    "
-                    style="
-                        text-align:center;
-                        cursor:pointer
-                    "
-                >
-
-                    导入数据
-
-
-                    <input
-                        type="file"
-                        accept=".json"
-                        onchange="
-                            importData(event)
-                        "
-                        style="
-                            display:none
-                        "
-                    >
-
-                </label>
-
-
-                <div style="height:10px"></div>
-
-
-                <button
-                    class="btn btn-danger"
-                    onclick="clearAllData()"
-                >
-
-                    清空所有数据
-
-                </button>
-
-
-                <div style="height:12px"></div>
-
-
-                <div class="notice">
-
-                    数据默认保存在当前手机浏览器中。
-
-                    <br>
-
-                    建议偶尔点击“导出数据”
-                    保存一个备份文件。
-
-                    <br><br>
-
-                    GitHub Pages 只保存网页代码，
-                    不保存你的消费记录。
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-    `;
-
-
-    document
-        .getElementById("app")
-        .innerHTML = html;
-
-}
-
-
-/* =====================================================
-   保存分类预算
-===================================================== */
-
-function saveBudget(
-    category
-) {
-
-    const monthly =
-        Number(
-            document
-                .getElementById(
-                    "monthly-" +
-                    category
-                )
-                .value
-        );
-
-
-    const yearly =
-        Number(
-            document
-                .getElementById(
-                    "yearly-" +
-                    category
-                )
-                .value
-        );
-
-
-    if (
-
-        monthly < 0 ||
-
-        yearly < 0 ||
-
-        isNaN(monthly) ||
-
-        isNaN(yearly)
-
-    ) {
-
-        alert(
-            "请输入正确的预算"
-        );
+        showToast("当前状态无法拒绝");
 
         return;
 
     }
 
 
-    data.budgets[category] = {
+    openModal(
 
-        monthly,
+        "拒绝申请",
 
-        yearly
+        `
+            <div style="
+                color:#666;
+                font-size:14px;
+                line-height:1.6;
+            ">
+                确定拒绝「${escapeHtml(expense.name)}」吗？
+            </div>
+        `,
 
-    };
+        () => {
+
+            expense.status = "rejected";
+
+            expense.rejectedAt =
+                new Date().toISOString();
 
 
-    saveData();
+            saveData();
 
 
-    alert(
-        "预算已保存"
+            closeModal();
+
+            showToast("申请已拒绝");
+
+            showExpense(id);
+
+        }
+
     );
-
-
-    renderSettings();
 
 }
 
 
-/* =====================================================
-   保存总预算
-===================================================== */
+/* ============================================================
+   Purchased
+============================================================ */
+
+function markPurchased(id) {
+
+    const expense =
+        data.expenses.find(
+            x => x.id === id
+        );
+
+
+    if (!expense) return;
+
+
+    if (
+        expense.status !== "approved"
+    ) {
+
+        showToast("只有审批通过的申请才能标记为已购买");
+
+        return;
+
+    }
+
+
+    openModal(
+
+        "确认购买",
+
+        `
+            <div style="
+                color:#555;
+                font-size:14px;
+                line-height:1.7;
+            ">
+
+                确定已经购买：
+
+                <br>
+
+                <strong>
+                    ${escapeHtml(expense.name)}
+                </strong>
+
+                <br>
+
+                金额：
+                <strong>
+                    ¥${formatMoney(expense.price)}
+                </strong>
+
+                <br><br>
+
+                购买后，这笔金额会正式占用
+                <strong>总预算</strong>
+                和
+                <strong>${escapeHtml(expense.category)}分类预算</strong>。
+
+            </div>
+        `,
+
+        () => {
+
+            expense.status = "purchased";
+
+            expense.purchasedAt =
+                new Date().toISOString();
+
+
+            /*
+             * 如果未来重复操作，这里不应该产生新的购买时间。
+             * 正常情况下 approved -> purchased 只发生一次。
+             */
+
+            saveData();
+
+
+            closeModal();
+
+            showToast("已标记为购买，预算已占用");
+
+            showExpense(id);
+
+        }
+
+    );
+
+}
+
+
+/* ============================================================
+   ★ Refund
+============================================================ */
+
+function markRefunded(id) {
+
+    const expense =
+        data.expenses.find(
+            x => x.id === id
+        );
+
+
+    if (!expense) return;
+
+
+    /*
+     * 只有真正购买过的东西才能退款。
+     */
+
+    if (
+        expense.status !== "purchased"
+    ) {
+
+        showToast("只有已购买的记录才能标记为已退款");
+
+        return;
+
+    }
+
+
+    openModal(
+
+        "确认退款",
+
+        `
+            <div style="
+                color:#555;
+                font-size:14px;
+                line-height:1.7;
+            ">
+
+                确定「${escapeHtml(expense.name)}」
+                最终已经退款了吗？
+
+                <br><br>
+
+                退款金额：
+
+                <strong>
+                    ¥${formatMoney(expense.price)}
+                </strong>
+
+                <br><br>
+
+                退款后：
+
+                <br>
+
+                • 记录仍然保留
+
+                <br>
+
+                • 购买时间仍然保留
+
+                <br>
+
+                • 退款时间会被记录
+
+                <br>
+
+                •
+                <strong>
+                    ¥${formatMoney(expense.price)}
+                </strong>
+                会从总预算中释放
+
+                <br>
+
+                •
+                <strong>
+                    ${escapeHtml(expense.category)}
+                </strong>
+                分类预算也会释放
+
+            </div>
+        `,
+
+        () => {
+
+            /*
+             * 核心：
+             * purchased -> refunded
+             *
+             * spending 函数只计算 purchased，
+             * 因此状态变成 refunded 后，
+             * 预算会自动释放。
+             */
+
+            expense.status = "refunded";
+
+            expense.refundedAt =
+                new Date().toISOString();
+
+
+            saveData();
+
+
+            closeModal();
+
+            showToast(
+                `已退款，¥${formatMoney(expense.price)} 预算已释放`
+            );
+
+
+            showExpense(id);
+
+        }
+
+    );
+
+}
+
+
+/* ============================================================
+   Settings
+============================================================ */
+
+function renderSettings() {
+
+    document.getElementById(
+        "settingMonthlyBudget"
+    ).value =
+        data.totalBudget.monthly;
+
+
+    document.getElementById(
+        "settingYearlyBudget"
+    ).value =
+        data.totalBudget.yearly;
+
+
+    renderCategorySettings();
+
+}
+
 
 function saveTotalBudget() {
 
     const monthly =
         Number(
-            document
-                .getElementById(
-                    "total-monthly"
-                )
-                .value
+            document.getElementById(
+                "settingMonthlyBudget"
+            ).value
         );
 
 
     const yearly =
         Number(
-            document
-                .getElementById(
-                    "total-yearly"
-                )
-                .value
+            document.getElementById(
+                "settingYearlyBudget"
+            ).value
         );
 
 
     if (
-
-        monthly < 0 ||
-
-        yearly < 0 ||
-
-        isNaN(monthly) ||
-
-        isNaN(yearly)
-
+        !Number.isFinite(monthly) ||
+        monthly < 0
     ) {
 
-        alert(
-            "请输入正确的预算"
-        );
+        showToast("每月预算不正确");
 
         return;
 
     }
 
 
-    data.totalBudget = {
+    if (
+        !Number.isFinite(yearly) ||
+        yearly < 0
+    ) {
 
-        monthly,
+        showToast("每年预算不正确");
 
-        yearly
+        return;
 
-    };
+    }
+
+
+    data.totalBudget.monthly =
+        monthly;
+
+
+    data.totalBudget.yearly =
+        yearly;
 
 
     saveData();
 
+    renderHome();
 
-    alert(
-        "总预算已保存"
-    );
-
-
-    renderSettings();
+    showToast("总预算已保存");
 
 }
 
 
-/* =====================================================
-   数据导出
-===================================================== */
+function renderCategorySettings() {
+
+    const container =
+        document.getElementById(
+            "categorySettings"
+        );
+
+
+    container.innerHTML = "";
+
+
+    CATEGORIES.forEach(category => {
+
+        const budget =
+            data.categoryBudgets[category];
+
+
+        const div =
+            document.createElement("div");
+
+
+        div.className =
+            "category-setting";
+
+
+        div.innerHTML = `
+
+            <div class="category-setting-title">
+                ${escapeHtml(category)}
+            </div>
+
+            <div class="category-setting-grid">
+
+                <label>
+
+                    每月预算
+
+                    <input
+                        type="number"
+                        min="0"
+                        step="100"
+                        value="${budget.monthly}"
+                        onchange="saveCategoryBudget(
+                            '${escapeJs(category)}',
+                            'monthly',
+                            this.value
+                        )"
+                    >
+
+                </label>
+
+                <label>
+
+                    每年预算
+
+                    <input
+                        type="number"
+                        min="0"
+                        step="100"
+                        value="${budget.yearly}"
+                        onchange="saveCategoryBudget(
+                            '${escapeJs(category)}',
+                            'yearly',
+                            this.value
+                        )"
+                    >
+
+                </label>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+function saveCategoryBudget(
+    category,
+    type,
+    value
+) {
+
+    const number =
+        Number(value);
+
+
+    if (
+        !Number.isFinite(number) ||
+        number < 0
+    ) {
+
+        showToast("预算金额不正确");
+
+        renderSettings();
+
+        return;
+
+    }
+
+
+    data.categoryBudgets[
+        category
+    ][type] = number;
+
+
+    saveData();
+
+    renderHome();
+
+    showToast(
+        `${category} ${type === "monthly" ? "每月" : "每年"}预算已保存`
+    );
+
+}
+
+
+/* ============================================================
+   Export
+============================================================ */
 
 function exportData() {
 
@@ -3465,328 +3830,525 @@ function exportData() {
 
     const blob =
         new Blob(
-
             [json],
-
             {
-                type:
-                    "application/json"
+                type: "application/json"
             }
-
         );
 
 
     const url =
-        URL.createObjectURL(
-            blob
-        );
+        URL.createObjectURL(blob);
 
 
     const a =
-        document.createElement(
-            "a"
-        );
+        document.createElement("a");
 
 
-    a.href =
-        url;
-
+    a.href = url;
 
     a.download =
-        "personal-expense-backup-" +
-        today() +
-        ".json";
+        `个人消费OA备份_${localDateString()}.json`;
 
+
+    document.body.appendChild(a);
 
     a.click();
 
+    a.remove();
 
-    URL.revokeObjectURL(
-        url
-    );
+
+    URL.revokeObjectURL(url);
+
+
+    showToast("数据已导出");
 
 }
 
 
-/* =====================================================
-   数据导入
-===================================================== */
+/* ============================================================
+   Import
+============================================================ */
 
-function importData(
-    event
-) {
+function importData(event) {
 
     const file =
         event.target.files[0];
 
 
-    if (!file) {
-
-        return;
-
-    }
+    if (!file) return;
 
 
     const reader =
         new FileReader();
 
 
-    reader.onload =
-        function(e) {
+    reader.onload = function(e) {
 
-            try {
+        try {
 
-                const imported =
-                    JSON.parse(
-                        e.target.result
-                    );
-
-
-                if (
-
-                    !imported.expenses ||
-
-                    !imported.budgets
-
-                ) {
-
-                    throw new Error();
-
-                }
-
-
-                /*
-                 * 如果是旧版本备份，
-                 * 没有总预算，
-                 * 自动补上默认总预算。
-                 */
-
-                if (
-                    !imported.totalBudget
-                ) {
-
-                    imported.totalBudget =
-                        JSON.parse(
-                            JSON.stringify(
-                                DEFAULT_TOTAL_BUDGET
-                            )
-                        );
-
-                }
-
-
-                if (
-
-                    !confirm(
-                        "导入数据会覆盖当前数据，确定继续吗？"
-                    )
-
-                ) {
-
-                    return;
-
-                }
-
-
-                data =
-                    imported;
-
-
-                saveData();
-
-
-                alert(
-                    "数据导入成功"
+            const imported =
+                JSON.parse(
+                    e.target.result
                 );
 
 
-                renderSettings();
+            if (
+                !imported ||
+                !Array.isArray(
+                    imported.expenses
+                )
+            ) {
 
-
-            } catch (error) {
-
-                alert(
-                    "数据文件无效"
+                throw new Error(
+                    "invalid"
                 );
 
             }
 
-        };
+
+            if (
+                !imported.categoryBudgets
+            ) {
+
+                imported.categoryBudgets =
+                    JSON.parse(
+                        JSON.stringify(
+                            DEFAULT_CATEGORY_BUDGETS
+                        )
+                    );
+
+            }
 
 
-    reader.readAsText(
-        file
-    );
+            if (
+                !imported.totalBudget
+            ) {
+
+                imported.totalBudget =
+                    JSON.parse(
+                        JSON.stringify(
+                            DEFAULT_TOTAL_BUDGET
+                        )
+                    );
+
+            }
+
+
+            /*
+             * 确保旧数据导入后也有所有分类。
+             */
+
+            CATEGORIES.forEach(category => {
+
+                if (
+                    !imported.categoryBudgets[category]
+                ) {
+
+                    imported.categoryBudgets[category] =
+                        {
+                            ...DEFAULT_CATEGORY_BUDGETS[category]
+                        };
+
+                }
+
+            });
+
+
+            /*
+             * 确保旧记录拥有退款字段。
+             */
+
+            imported.expenses.forEach(expense => {
+
+                if (
+                    typeof expense.refundedAt ===
+                    "undefined"
+                ) {
+
+                    expense.refundedAt = null;
+
+                }
+
+            });
+
+
+            data = imported;
+
+
+            saveData();
+
+
+            renderHome();
+
+
+            showToast(
+                "数据导入成功"
+            );
+
+
+            event.target.value = "";
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            showToast(
+                "导入失败：文件格式不正确"
+            );
+
+            event.target.value = "";
+
+        }
+
+    };
+
+
+    reader.readAsText(file);
 
 }
 
 
-/* =====================================================
-   清空数据
-===================================================== */
+/* ============================================================
+   Clear
+============================================================ */
 
 function clearAllData() {
 
-    if (
+    openModal(
 
-        !confirm(
-            "确定要删除全部消费记录吗？"
-        )
+        "清空全部数据",
 
-    ) {
+        `
+            <div style="
+                color:#d93025;
+                font-size:14px;
+                line-height:1.7;
+            ">
 
-        return;
+                ⚠️ 确定要清空所有消费申请和记录吗？
 
-    }
+                <br><br>
+
+                此操作无法撤销。
+
+                <br><br>
+
+                如果你有重要记录，请先导出数据。
+
+            </div>
+        `,
+
+        () => {
+
+            data = {
+
+                expenses: [],
+
+                categoryBudgets:
+                    JSON.parse(
+                        JSON.stringify(
+                            DEFAULT_CATEGORY_BUDGETS
+                        )
+                    ),
+
+                totalBudget:
+                    JSON.parse(
+                        JSON.stringify(
+                            DEFAULT_TOTAL_BUDGET
+                        )
+                    )
+
+            };
 
 
-    if (
-
-        !confirm(
-            "再次确认：所有申请和审批记录都会消失。"
-        )
-
-    ) {
-
-        return;
-
-    }
+            saveData();
 
 
-    data.expenses = [];
+            closeModal();
 
+            renderHome();
 
-    saveData();
+            showToast("所有数据已清空");
 
+        }
 
-    alert(
-        "数据已经清空"
     );
-
-
-    renderSettings();
 
 }
 
 
-/* =====================================================
-   页面切换
-===================================================== */
+/* ============================================================
+   Modal
+============================================================ */
 
-function showPage(
-    page
+let modalCallback = null;
+
+
+function openModal(
+    title,
+    content,
+    callback
 ) {
 
-    document
+    document.getElementById(
+        "modalTitle"
+    ).textContent = title;
 
-        .querySelectorAll(
-            ".nav-btn"
-        )
 
-        .forEach(
-            btn =>
-                btn.classList
-                    .remove(
-                        "active"
-                    )
+    document.getElementById(
+        "modalContent"
+    ).innerHTML = content;
+
+
+    modalCallback = callback;
+
+
+    document.getElementById(
+        "modalMask"
+    ).classList.add("show");
+
+}
+
+
+function closeModal() {
+
+    document.getElementById(
+        "modalMask"
+    ).classList.remove("show");
+
+
+    modalCallback = null;
+
+}
+
+
+function confirmModal() {
+
+    if (
+        typeof modalCallback ===
+        "function"
+    ) {
+
+        const callback =
+            modalCallback;
+
+
+        modalCallback = null;
+
+
+        callback();
+
+    }
+
+}
+
+
+/* ============================================================
+   Toast
+============================================================ */
+
+let toastTimer = null;
+
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById(
+            "toast"
         );
 
 
-    if (
-        page === "home"
-    ) {
-
-        document
-
-            .querySelectorAll(
-                ".nav-btn"
-            )[0]
-
-            .classList
-
-            .add(
-                "active"
-            );
+    toast.textContent =
+        message;
 
 
-        renderHome();
-
-    }
+    toast.classList.add("show");
 
 
-    else if (
-        page === "pending"
-    ) {
-
-        document
-
-            .querySelectorAll(
-                ".nav-btn"
-            )[1]
-
-            .classList
-
-            .add(
-                "active"
-            );
+    clearTimeout(toastTimer);
 
 
-        renderPending();
+    toastTimer =
+        setTimeout(
+            () => {
 
-    }
+                toast.classList.remove(
+                    "show"
+                );
 
-
-    else if (
-        page === "records"
-    ) {
-
-        document
-
-            .querySelectorAll(
-                ".nav-btn"
-            )[2]
-
-            .classList
-
-            .add(
-                "active"
-            );
-
-
-        renderRecords();
-
-    }
-
-
-    else if (
-        page === "settings"
-    ) {
-
-        document
-
-            .querySelectorAll(
-                ".nav-btn"
-            )[3]
-
-            .classList
-
-            .add(
-                "active"
-            );
-
-
-        renderSettings();
-
-    }
+            },
+            2200
+        );
 
 }
 
 
-/* =====================================================
-   启动
-===================================================== */
+/* ============================================================
+   Helpers
+============================================================ */
 
-renderHome();
+function formatMoney(number) {
+
+    const n =
+        Number(number) || 0;
+
+
+    return n.toLocaleString(
+        "zh-CN",
+        {
+            minimumFractionDigits:
+                Number.isInteger(n)
+                ? 0
+                : 2,
+
+            maximumFractionDigits: 2
+        }
+    );
+
+}
+
+
+function escapeHtml(value) {
+
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+function escapeJs(value) {
+
+    return String(value ?? "")
+        .replace(/\\/g, "\\\\")
+        .replace(/'/g, "\\'");
+
+}
+
+
+function emptyHtml(
+    icon,
+    text
+) {
+
+    return `
+
+        <div class="empty">
+
+            <div class="empty-icon">
+                ${icon}
+            </div>
+
+            <div class="empty-text">
+                ${text}
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+function getChoiceTitle(
+    type,
+    value
+) {
+
+    if (!value) return "未填写";
+
+
+    const item =
+        CHOICES[type].find(
+            x => x.value === value
+        );
+
+
+    return item
+        ? item.title
+        : value;
+
+}
+
+
+/* ============================================================
+   Detail page without changing nav
+============================================================ */
+
+function showPageWithoutNav(page) {
+
+    document.querySelectorAll(".page")
+        .forEach(el => {
+
+            el.classList.remove("active");
+
+        });
+
+
+    const target =
+        document.getElementById(
+            `page-${page}`
+        );
+
+
+    if (target) {
+
+        target.classList.add("active");
+
+    }
+
+
+    document.querySelectorAll(".nav button")
+        .forEach(el => {
+
+            el.classList.remove("active");
+
+        });
+
+}
+
+
+/* ============================================================
+   Initialization
+============================================================ */
+
+function initialize() {
+
+    renderHome();
+
+    initNewForm();
+
+}
+
+
+initialize();
+
+
+/* ============================================================
+   Prevent accidental modal close when clicking background
+============================================================ */
+
+document.getElementById(
+    "modalMask"
+).addEventListener(
+    "click",
+    function(e) {
+
+        if (
+            e.target === this
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+);
 
 </script>
 
